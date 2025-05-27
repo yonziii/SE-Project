@@ -25,3 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+//buat sign up
+document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.querySelector('.password-field input');
+    const toggleIcon = document.querySelector('.password-field img');
+
+    toggleIcon.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type');
+        passwordInput.setAttribute('type', type === 'password' ? 'text' : 'password');
+        toggleIcon.src = type === 'password' ? './asset/eye-open.png' : './asset/eye.png';
+    });
+});
