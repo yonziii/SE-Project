@@ -1,0 +1,202 @@
+:root{
+    --body-color: #F8F6FC;
+    --white-color: #FFFFFF;
+    --primary-color: #625AFF;
+    --primary-color-rgb: 90, 90, 255;
+    --text-color: #251B5A;
+    --border-color: #E4E3EB;
+}
+
+/* ===== UNIVERSAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito-Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-size: 16px;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== REUSABLE CSS ===== */
+.sidebar-toggle{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 90%;
+    right: -16px;
+    transform: translateY(-50%);
+    border: 2px solid var(--border-color);
+    border-radius: 120%;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.sidebar-toggle .material-symbols{
+    font-size: 1.5rem;
+    transform: scaleX(-1);
+    display: block;
+    transform: all 0.5s ease;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: var(--white-color);
+    transition: all 0.2s ease;
+    z-index: 100;
+    border-right: 2px solid var(--border-color);
+}
+
+.sidebar .text{
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* SIDEBAR CLOSED */
+.sidebar.close {
+  width: 78px;
+}
+
+.sidebar.close .text {
+  display: none;
+}
+
+
+.sidebar header{
+    position: relative
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: auto;
+    height: 72px;
+    padding: 20px 0;
+    display: block
+}
+
+.menu-bar{
+    height: 100%;
+}
+
+.menu{
+    height: calc(100% - 72px);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.highlight-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.menu-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-link {
+    height: 56px;
+    width: 80%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    border-color: #625AFF;
+}
+
+
+.nav-link.active{
+    background-color: rgba(var(--primary-color-rgb), 0.16);
+}
+
+.nav-link a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link .material-symbols-rounded {
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 64%;
+}
+
+.nav-link.nav-link.active .material-symbols-rounded{
+    color: var(--primary-color);
+    opacity: 100%;
+}
+
+.nav-link .nav-text{
+    font-weight: 600;
+    color: #7e7e9f;
+}
+
+.purple-button {
+    height: 48px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    line-height: 24px;
+    padding: 12px 20px;
+    opacity: 100%;
+    border: none;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+.purple-button.back-home{
+  margin: 32px 0 0 0;
+}
+
+.purple-button .material-symbols-rounded {
+    font-size: 1.2rem;
+    color: var(--white-color);
+    margin-right: 4px;
+    opacity: 100%;
+}
+
+.purple-button .nav-text {
+    color: var(--white-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sidebar.close .nav-link {
+  justify-content: center;
+}
+
+.sidebar.close .purple-button .material-symbols-rounded {
+  margin-right: 0;
+}
