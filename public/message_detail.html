@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
-    <link rel="stylesheet" href="message.css">
+    <link rel="stylesheet" href="message_detail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
-    <title>Document</title>
+    <title>Messages Detail</title>
 </head>
 <body>
     <header>
@@ -104,15 +104,56 @@
                 </li>
                 <li class="visited-item">
                     <div class="green-square"></div>
-                    <span>Speech Competition</span>
+                    <span>Laper euy</span>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="content">
+        <div class="chat-area">
+            <div class="chat-header">
+                <div class="chat-user-info">
+                    <img src="./asset/mingyu.png" alt="Mingyu" class="chat-user-avatar">
+                    <h3>Mingyu</h3>
+                </div>
+                <div class="chat-header-actions">
+                    <span class="material-symbols-rounded">search</span>
+                </div>
+            </div>
+            <div class="chat-messages">
+                <div class="message received">
+                    <img src="./asset/mingyu.png" alt="Mingyu" class="message-avatar">
+                    <div class="message-bubble">
+                        Hello
+                    </div>
+                </div>
+                <div class="message received">
+                    <img src="./asset/mingyu.png" alt="Mingyu" class="message-avatar">
+                    <div class="message-bubble image-message">
+                        <img src="./asset/stiker.png" alt="Shared Image">
+                    </div>
+                </div>
+                <div class="message received">
+                    <img src="./asset/mingyu.png" alt="Mingyu" class="message-avatar">
+                    <div class="message-bubble">
+                        When will we get to learn Database design???
+                    </div>
+                </div>
+                <div class="message sent">
+                    <div class="message-bubble">
+                        ...
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <span class="material-symbols-rounded">attach_file</span>
+                <input type="text" placeholder="Type a message...">
+                <span class="material-symbols-rounded">sentiment_satisfied</span>
+            </div>
+        </div>
+
         <div class="conversation-container">
-            <div class="conversation-header">
-                <img src="./asset/convoblue.png" alt=""><h2>Conversation</h2>
+            <div class="conversation-header-main"> <img src="./asset/convoblue.png" alt=""><h2>Conversation</h2>
             </div>
             <div class="chat-filters">
                 <button class="filter-btn active" data-filter="all">All</button>
@@ -122,7 +163,8 @@
             <div class="chat-list">
                 <a href="message_detail.html?user=NIKI" class="chat-item" data-chat-type="personal">
                     <div class="chat-info">
-                        <img src="./asset/niki.png" alt="Niki Profile"> <div class="chat-text">
+                        <img src="./asset/niki.png" alt="Niki Profile">
+                        <div class="chat-text">
                             <h3>NIKI</h3>
                             <p>Thanks for today ^-^!!!</p>
                         </div>
@@ -132,7 +174,8 @@
 
                 <a href="message_detail.html?user=Mingyu" class="chat-item" data-chat-type="personal">
                     <div class="chat-info">
-                        <img src="./asset/mingyu.png" alt="Mingyu Profile"> <div class="chat-text">
+                        <img src="./asset/mingyu.png" alt="Mingyu Profile">
+                        <div class="chat-text">
                             <h3>Mingyu</h3>
                             <p>When will we get to learn database design ?</p>
                         </div>
@@ -142,27 +185,27 @@
 
                 <a href="message_detail.html?group=ABC" class="chat-item" data-chat-type="group">
                     <div class="chat-info">
-                        <img src="./asset/abc.png" alt="ABC Group Profile"> <div class="chat-text">
+                        <img src="./asset/abc.png" alt="ABC Group Profile">
+                        <div class="chat-text">
                             <h3>ABC</h3>
-                            <p>Let's talk about it tommorow guys</p>
+                            <p>Let's talk about it tomorrow guys</p>
                         </div>
                     </div>
                     <span class="chat-badge">16</span>
                 </a>
 
-                <a href="chat_detail.html?group=Fouriends" class="chat-item" data-chat-type="group">
+                <a href="message_detail.html?group=Fouriends" class="chat-item" data-chat-type="group">
                     <div class="chat-info">
-                        <img src="./asset/fouriends.png" alt="Fouriends Group Profile"> <div class="chat-text">
+                        <img src="./asset/fouriends.png" alt="Fouriends Group Profile">
+                        <div class="chat-text">
                             <h3>Fouriends</h3>
                             <p>Anggi Yunanda sends a sticker</p>
                         </div>
                     </div>
-                    </a>
-
-            </div>
+                </a>
+                </div>
         </div>
-    </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
- 
