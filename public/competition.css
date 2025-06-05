@@ -268,9 +268,298 @@ header {
 
 /* ----------Content----------- */
 
+
 .content {
     margin-left: 250px;
     margin-top: 80px; 
     padding: 24px;
     flex: 1;
+}
+
+.content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    position: relative; 
+    z-index: 2;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.filter-dropdown {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    user-select: none; 
+}
+
+.filter-dropdown .material-symbols-rounded {
+    font-size: 18px;
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.filter-dropdown.active .material-symbols-rounded {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: calc(100% + 8px); 
+    left: 0;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 150px; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+    z-index: 10; 
+}
+
+.dropdown-options.show {
+    display: flex; 
+}
+
+.dropdown-options span {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.dropdown-options span:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-options span.selected {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+
+.competition-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.competition-card-main {
+    background-color: var(--sidebar-bg); 
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-main {
+    display: flex;
+    align-items: flex-start; 
+    gap: 20px;
+    position: relative;
+}
+
+.card-header-main img {
+    width: 100px; /* Lebar gambar logo */
+    height: 100px; /* Tinggi gambar logo */
+    border-radius: 12px; /* Slight border-radius for the image */
+    object-fit: cover; /* Ensure image covers the area */
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.card-info-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info-main h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.date-main {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: bolder;
+}
+
+.date-main img{
+    height: 12px;
+    width: 12px;
+    margin-right: 5px;
+}
+.description-main {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.description-main a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.created-by-main {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.created-by-main a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tags-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-main {
+    background-color: #d5f3ff;
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+.card-actions-main {
+    display: flex;
+    gap: 8px;
+    position: absolute; /* Position icons top-right */
+    top: 0;
+    right: 0;
+}
+
+.card-actions-main .material-symbols-rounded {
+    font-size: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    header {
+        position: static; /* Header can be static on small screens */
+        height: auto;
+        padding: 10px;
+    }
+    .header-middle {
+        display: none; /* Hide search bar on very small screens */
+    }
+    .sidebar {
+        position: static;
+        width: 100%;
+        padding: 15px;
+        top: auto;
+        left: auto;
+        border-bottom: 1px solid #eee;
+    }
+    .profile {
+        margin: 0 0 20px 0;
+    }
+    .menu-items {
+        flex-direction: row; /* Horizontal menu on small screens */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .menu-item {
+        padding: 8px 12px;
+        margin-bottom: 0;
+    }
+    .menu-item a {
+        flex-direction: column;
+        text-align: center;
+    }
+    .menu-item .material-symbols-rounded {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .text.nav-text {
+        font-size: 12px;
+    }
+    .last-visited {
+        margin-top: 20px;
+        text-align: center;
+        padding-left: 0;
+    }
+    .visited-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .visited-item {
+        margin-bottom: 0;
+    }
+    .content {
+        margin-left: 0;
+        margin-top: 0;
+        padding: 15px;
+    }
+    .filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .competition-card-main {
+        padding: 15px;
+    }
+    .card-header-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .card-header-main img {
+        width: 80px;
+        height: 80px;
+    }
+    .card-actions-main {
+        position: static;
+        margin-top: 10px;
+        justify-content: center;
+    }
 }

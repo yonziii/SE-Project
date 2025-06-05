@@ -110,7 +110,104 @@
         </div>
     </nav>
     <div class="content">
-        
+         <h2>Competitions</h2>
+        <div class="filters">
+            <span class="filter-label">Filter By:</span>
+            <div class="filter-dropdown" data-filter-type="prize">
+                <span>Prize</span>
+                <span class="material-symbols-rounded">expand_more</span>
+                <div class="dropdown-options">
+                    <span data-value="all">All</span>
+                    <span data-value="cash">Cash Prize</span>
+                    <span data-value="non-cash">Non-Cash Prize</span>
+                </div>
+            </div>
+            <div class="filter-dropdown" data-filter-type="type">
+                <span>Type</span>
+                <span class="material-symbols-rounded">expand_more</span>
+                <div class="dropdown-options">
+                    <span data-value="all">All</span>
+                    <span data-value="hackathon">Hackathon</span>
+                    <span data-value="web-development">Web Development</span>
+                    <span data-value="app-development">App Development</span>
+                    <span data-value="ai">Artificial Intelligence</span>
+                    <span data-value="competitive-programming">Competitive Programming</span>
+                    <span data-value="business-case">Business Case</span>
+                    <span data-value="innovation">Innovation</span>
+                </div>
+            </div>
+            <div class="filter-dropdown" data-filter-type="member">
+                <span>Member</span>
+                <span class="material-symbols-rounded">expand_more</span>
+                <div class="dropdown-options">
+                    <span data-value="all">Member</span>
+                    <span data-value="individual">Individual</span>
+                    <span data-value="team">Team</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="competition-list">
+            <div class="competition-card-main" data-prize="non-cash" data-type="hackathon web-development app-development ai" data-member="team">
+                <div class="card-header-main">
+                    <img src="./asset/detil.png" alt="SDIC Logo"> <div class="card-info-main">
+                        <h3>Software Developer International Competition</h3>
+                        <p class="date-main"><img src="./asset/hourglass.png" alt="">08 March 2025 - 12 April 2025</p>
+                        <p class="description-main">Global competition for software developers to showcase their skills in designing, building, and optimizing technology-based solutions. The competition covers various categories, including web development, mobile and app development, artificial intelligence and hackaton. <a href="#">See More</a></p>
+                        <p class="created-by-main">Created by <a href="#">SSD Club</a></p>
+                        <div class="tags-main">
+                            <span class="tag-main">Hackathon</span>
+                            <span class="tag-main">Web Development</span>
+                            <span class="tag-main">App Development</span>
+                            <span class="tag-main">Artificial Intelligence</span>
+                        </div>
+                    </div>
+                    <div class="card-actions-main">
+                        <span class="material-symbols-rounded">bookmark</span>
+                        <span class="material-symbols-rounded">more_vert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="competition-card-main" data-prize="non-cash" data-type="competitive-programming" data-member="team">
+                <div class="card-header-main">
+                    <img src="./asset/similar.png" alt="ICPC Logo"> <div class="card-info-main">
+                        <h3>2025 ICPC Asia Jakarta Regional Contest</h3>
+                        <p class="date-main"><img src="./asset/hourglass.png" alt="">08 March 2025 - 12 April 2025</p>
+                        <p class="description-main">Prestigious competitive programming competition that brings together top university teams from across the region to solve complex algorithmic problems under time constraints. As part of the International Collegiate ... <a href="#">See more
+                        </a></p>
+                        <p class="created-by-main">Created by <a href="#">ICPC Indonesia Teams</a></p>
+                        <div class="tags-main">
+                            <span class="tag-main grey-bg">icpc.foundation</span>
+                            <span class="tag-main">Competitive Programming</span>
+                        </div>
+                    </div>
+                    <div class="card-actions-main">
+                        <span class="material-symbols-rounded">bookmark</span>
+                        <span class="material-symbols-rounded">more_vert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="competition-card-main" data-prize="cash" data-type="business-case innovation" data-member="team">
+                <div class="card-header-main">
+                    <img src="./asset/similar2.png" alt="ABCC Logo"> <div class="card-info-main">
+                        <h3>2025 Asian Business Case Competition</h3>
+                        <p class="date-main"><img src="./asset/hourglass.png" alt="">08 March 2025 - 12 April 2025</p>
+                        <p class="description-main">Annual business case competition for university students across Asia, focusing on strategic thinking, problem-solving, and presentation skills... <a href="#">See More</a></p>
+                        <p class="created-by-main">Created by <a href="#">ABCC Singapore</a></p>
+                        <div class="tags-main">
+                            <span class="tag-main">Business Case</span>
+                            <span class="tag-main">Innovation</span>
+                        </div>
+                    </div>
+                    <div class="card-actions-main">
+                        <span class="material-symbols-rounded">bookmark</span>
+                        <span class="material-symbols-rounded">more_vert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

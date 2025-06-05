@@ -110,8 +110,59 @@
         </div>
     </nav>
     <div class="content">
+        <div class="conversation-container">
+            <div class="conversation-header">
+                <span class="material-symbols-rounded icon-small">chat_bubble</span> <h2>Conversation</h2>
+            </div>
+            <div class="chat-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="personal">Personal</button>
+                <button class="filter-btn" data-filter="group">Group</button>
+            </div>
+            <div class="chat-list">
+                <a href="chat_detail.html?user=NIKI" class="chat-item" data-chat-type="personal">
+                    <div class="chat-info">
+                        <img src="./asset/niki_profile.png" alt="Niki Profile"> <div class="chat-text">
+                            <h3>NIKI</h3>
+                            <p>Thanks for today ^-^!!!</p>
+                        </div>
+                    </div>
+                    <span class="chat-badge">2</span>
+                </a>
 
+                <a href="chat_detail.html?user=Mingyu" class="chat-item" data-chat-type="personal">
+                    <div class="chat-info">
+                        <img src="./asset/mingyu_profile.png" alt="Mingyu Profile"> <div class="chat-text">
+                            <h3>Mingyu</h3>
+                            <p>When will we get to learn database design ?</p>
+                        </div>
+                    </div>
+                    <span class="chat-badge">3</span>
+                </a>
+
+                <a href="chat_detail.html?group=ABC" class="chat-item" data-chat-type="group">
+                    <div class="chat-info">
+                        <img src="./asset/abc_group_profile.png" alt="ABC Group Profile"> <div class="chat-text">
+                            <h3>ABC</h3>
+                            <p>Let's talk about it tommorow guys</p>
+                        </div>
+                    </div>
+                    <span class="chat-badge">16</span>
+                </a>
+
+                <a href="chat_detail.html?group=Fouriends" class="chat-item" data-chat-type="group">
+                    <div class="chat-info">
+                        <img src="./asset/fouriends_group_profile.png" alt="Fouriends Group Profile"> <div class="chat-text">
+                            <h3>Fouriends</h3>
+                            <p>Anggi Yunanda sends a sticker</p>
+                        </div>
+                    </div>
+                    </a>
+
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+ 
