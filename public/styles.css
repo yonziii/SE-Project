@@ -388,7 +388,7 @@ button:hover{
 }
 /* ini section detail page */
 .body-detail {
-    background-color: #f9fafa;
+    background-color: var(--body-color);
     color: #1a1a1a;
     padding: 20px;
     display: flex;
