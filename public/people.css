@@ -1,0 +1,439 @@
+:root {
+    --primary-color: #1DC4D7;
+    --orange-color: #ff4500;
+    --body-bg: #F4F7F9;
+    --sidebar-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #7e7e9f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ----------Header----------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    height: 80px; 
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 32px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    height: 40px; 
+}
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icons .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.header-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ----------Side bar----------- */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h1 {
+    font-size: 24px;
+    text-align: left; 
+}
+
+.teman {
+    color: var(--primary-color);
+}
+
+.lomba {
+    color: var(--orange-color);
+}
+
+.profile {
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(29, 196, 215, 0.1);
+    margin: 0 8px 32px 8px; 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+.profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29, 196, 215, 0.15);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-bottom: 0; 
+}
+
+.profile-info {
+    text-align: left;
+}
+
+.profile-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 0; 
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px 0;
+}
+
+.stat-item .number {
+    font-weight: bold;
+    font-size: 16px; 
+}
+
+.stat-item .label {
+    font-size: 11px; 
+    color: var(--text-secondary);
+}
+
+.menu-item {
+    padding: 14px 18px; 
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+    list-style: none;
+}
+
+.menu-item .material-symbols-rounded {
+    margin-right: 14px; 
+    font-size: 22px; 
+}
+
+.text.nav-text {
+    font-size: 15px; 
+}
+.menu-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+
+}
+.menu-item:not(.active):hover {
+    background-color: rgba(29, 196, 215, 0.1);
+    transform: translateX(4px);
+}
+
+.menu-item.active {
+    background-color: var(--primary-color);
+}
+
+.menu-item.active a {
+    color: white;
+}
+
+.menu-item.active .material-symbols-rounded {
+    color: white;
+}
+
+.last-visited {
+    margin-top: auto;
+}
+
+.last-visited h4 {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.visited-items {
+    list-style: none;
+}
+
+.visited-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.visited-item div {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.purple-square {
+    background-color: #e0d5ff;
+}
+
+.blue-square {
+    background-color: #d5f3ff;
+}
+
+.green-square {
+    background-color: #d5ffdb;
+}
+
+/* ----------Content----------- */
+.content {
+    padding: 24px;
+    margin-left: 260px;
+    margin-top: 80px;
+    background-color: var(--body-bg);
+}
+
+.content-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    justify-content: center; /* Center the buttons */
+    background-color: var(--sidebar-bg); /* White background */
+    padding: 8px;
+    border-radius: 16px;
+    width: fit-content; /* Make container fit content */
+    margin-left: auto; /* Center the container */
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow */
+}
+
+.content-header button {
+    padding: 8px 24px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.content-header button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.content-header button:hover:not(.active) {
+    background-color: var(--body-bg);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.show-all {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+.people-cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.person-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 240px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.person-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(29, 196, 215, 0.15);
+    border-color: var(--primary-color);
+}
+
+
+.person-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.person-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.person-title {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    padding: 4px 12px;
+    background: var(--body-bg);
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.mutual-friends {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.friend-request-btn {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.friend-request-btn.followed {
+    background-color: var(--body-bg);
+    color: var(--text-secondary);
+    border: none;
+}
+
+.friend-request-btn.followed span {
+    color: var(--text-secondary);
+}
+
+.friend-request-btn.followed:hover {
+    background-color: var(--sidebar-bg);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.friend-request-btn.followed:hover span {
+    color: var(--primary-color);
+}
+
+.friend-request-btn.followed span {
+    font-variation-settings: 'FILL' 1;
+}
