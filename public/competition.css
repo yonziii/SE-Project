@@ -387,11 +387,11 @@ header {
 }
 
 .card-header-main img {
-    width: 100px; /* Lebar gambar logo */
-    height: 100px; /* Tinggi gambar logo */
-    border-radius: 12px; /* Slight border-radius for the image */
-    object-fit: cover; /* Ensure image covers the area */
-    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 100px;
+    height: 100px; 
+    border-radius: 12px; 
+    object-fit: cover; 
+    flex-shrink: 0;
 }
 
 .card-info-main {
@@ -464,7 +464,7 @@ header {
 .card-actions-main {
     display: flex;
     gap: 8px;
-    position: absolute; /* Position icons top-right */
+    position: absolute; 
     top: 0;
     right: 0;
 }
@@ -481,12 +481,12 @@ header {
         flex-direction: column;
     }
     header {
-        position: static; /* Header can be static on small screens */
+        position: static; 
         height: auto;
         padding: 10px;
     }
     .header-middle {
-        display: none; /* Hide search bar on very small screens */
+        display: none; 
     }
     .sidebar {
         position: static;
@@ -500,7 +500,7 @@ header {
         margin: 0 0 20px 0;
     }
     .menu-items {
-        flex-direction: row; /* Horizontal menu on small screens */
+        flex-direction: row; 
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
