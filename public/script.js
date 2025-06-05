@@ -113,3 +113,140 @@ if (signinForm) {
     });
 }
 
+// ini dari sini buat konten competition
+document.addEventListener('DOMContentLoaded', () => {
+    const filterDropdowns = document.querySelectorAll('.filter-dropdown');
+    const competitionCards = document.querySelectorAll('.competition-card-main');
+
+    let activeFilters = {
+        prize: 'all',
+        type: 'all',
+        member: 'all'
+    };
+
+    filterDropdowns.forEach(dropdown => {
+        const dropdownText = dropdown.querySelector('span:first-child');
+        const dropdownOptions = dropdown.querySelector('.dropdown-options');
+        const filterType = dropdown.dataset.filterType;
+
+        const initialSelectedOption = dropdownOptions.querySelector(`[data-value="${activeFilters[filterType]}"]`);
+        if (initialSelectedOption) {
+            initialSelectedOption.classList.add('selected');
+        }
+
+        dropdown.addEventListener('click', (event) => {
+            dropdown.classList.toggle('active');
+            dropdownOptions.classList.toggle('show');
+
+            filterDropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown && otherDropdown.classList.contains('active')) {
+                    otherDropdown.classList.remove('active');
+                    otherDropdown.querySelector('.dropdown-options').classList.remove('show');
+                }
+            });
+
+            event.stopPropagation(); 
+        });
+
+        dropdownOptions.addEventListener('click', (event) => {
+            if (event.target.tagName === 'SPAN') {
+                const selectedValue = event.target.dataset.value;
+                
+                dropdownText.textContent = event.target.textContent;
+
+                dropdownOptions.querySelectorAll('span').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                event.target.classList.add('selected');
+
+                activeFilters[filterType] = selectedValue;
+                applyFilters();
+
+      
+                dropdown.classList.remove('active');
+                dropdownOptions.classList.remove('show');
+            }
+            event.stopPropagation();
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        filterDropdowns.forEach(dropdown => {
+            if (dropdown.classList.contains('active') && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+                dropdown.querySelector('.dropdown-options').classList.remove('show');
+            }
+        });
+    });
+
+    function applyFilters() {
+        competitionCards.forEach(card => {
+            const cardPrize = card.dataset.prize;
+            const cardType = card.dataset.type.split(' '); 
+            const cardMember = card.dataset.member;
+
+            let showCard = true;
+            if (activeFilters.prize !== 'all' && activeFilters.prize !== cardPrize) {
+                showCard = false;
+            }
+
+            if (activeFilters.type !== 'all' && !cardType.includes(activeFilters.type)) {
+                showCard = false;
+            }
+
+
+            if (activeFilters.member !== 'all' && activeFilters.member !== cardMember) {
+                showCard = false;
+            }
+
+            if (showCard) {
+                card.style.display = 'flex'; 
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+
+    applyFilters();
+});
+// sampai sini competitonnya
+
+//ini buat message
+document.addEventListener('DOMContentLoaded', () => {
+
+    const filterButtons = document.querySelectorAll('.chat-filters .filter-btn');
+    const chatItems = document.querySelectorAll('.chat-list .chat-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filterType = button.dataset.filter;
+
+   
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            chatItems.forEach(item => {
+                const chatItemType = item.dataset.chatType;
+                if (filterType === 'all' || chatItemType === filterType) {
+                    item.style.display = 'flex'; 
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+  
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        if (item.querySelector('.text.nav-text').textContent === 'Messages') {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+
+});
+//message sampai sini
