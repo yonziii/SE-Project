@@ -237,16 +237,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-  
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach(item => {
-        if (item.querySelector('.text.nav-text').textContent === 'Messages') {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
-    });
-
-
 });
 //message sampai sini

@@ -60,31 +60,31 @@
 
         <ul class="menu-items">
             <li class="menu-item active">
-                <a href="#">
+                <a href="home.html">
                     <span class="material-symbols-rounded">home</span>
                     <span class="text nav-text">Home</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#">
+                <a href="competition.html">
                     <span class="material-symbols-rounded">social_leaderboard</span>
                     <span class="text nav-text">Competitions</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#">
+                <a href="message.html">
                     <span class="material-symbols-rounded">maps_ugc</span>
                     <span class="text nav-text">Messages</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#">
+                <a href="people.html">
                     <span class="material-symbols-rounded">group</span>
                     <span class="text nav-text">People</span>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="#">
+                <a href="settings.html">
                     <span class="material-symbols-rounded">settings</span>
                     <span class="text nav-text">Settings</span>
                 </a>
@@ -111,6 +111,61 @@
     </nav>
     <div class="content">
         <div class="feed">
+            <div class="create-post">
+                <div class="create-post-header">
+                    <img src="./asset/yonzi.png" alt="Profile Picture">
+                    <button class="create-post-input">
+                        <span>Share something...</span>
+                    </button>
+                    <button class="emoji-btn">
+                        <span class="material-symbols-rounded">sentiment_satisfied</span>
+                    </button>
+                </div>
+                <div class="create-post-actions">
+                    <button class="post-action-btn">
+                        <span class="material-symbols-rounded">image</span>
+                        Image
+                    </button>
+                    <button class="post-action-btn">
+                        <span class="material-symbols-rounded">videocam</span>
+                        Video
+                    </button>
+                    <button class="post-action-btn">
+                        <span class="material-symbols-rounded">poll</span>
+                        Feed
+                    </button>
+                    <div class="post-privacy">
+                        <button class="privacy-btn">
+                            <span class="material-symbols-rounded" id="privacy-icon">public</span>
+                            <span id="privacy-text">Public</span>
+                            <span class="material-symbols-rounded">expand_more</span>
+                        </button>
+                        <div class="privacy-dropdown">
+                            <div class="dropdown-item" data-value="public">
+                                <span class="material-symbols-rounded">public</span>
+                                <div class="dropdown-text">
+                                    <span>Public</span>
+                                    <p>Anyone can see this post</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item" data-value="friends">
+                                <span class="material-symbols-rounded">group</span>
+                                <div class="dropdown-text">
+                                    <span>Friends</span>
+                                    <p>Only friends can see this post</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item" data-value="private">
+                                <span class="material-symbols-rounded">lock</span>
+                                <div class="dropdown-text">
+                                    <span>Private</span>
+                                    <p>Only you can see this post</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="post">
                 <div class="post-header">
                     <img src="./asset/yonzi.png" alt="Profile Picture">
@@ -228,6 +283,48 @@
                     </div>
                     <div class="footer-copy">
                         ©2025 TemanLomba
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="create-post-modal">
+        <div class="modal-content">
+            <input type="file" id="image-input" accept="image/*" style="display: none;">
+            <input type="file" id="video-input" accept="video/*" style="display: none;">
+            <input type="file" id="document-input" accept=".pdf,.doc,.docx" style="display: none;">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <img src="./asset/yonzi.png" alt="Profile Picture">
+                    <h3>John Doe</h3>
+                </div>
+                <button class="close-modal">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="What you want to share?"></textarea>
+                <div class="file-preview" id="file-preview"></div>
+                <div class="modal-actions">
+                    <div class="modal-buttons">
+                        <button class="action-btn" data-tooltip="Add Image" id="image-btn">
+                            <span class="material-symbols-rounded">image</span>
+                        </button>
+                        <button class="action-btn" data-tooltip="Add Video" id="video-btn">
+                            <span class="material-symbols-rounded">videocam</span>
+                        </button>
+                        <button class="action-btn" data-tooltip="Create Poll" id="poll-btn">
+                            <span class="material-symbols-rounded">poll</span>
+                        </button>
+                        <button class="action-btn" data-tooltip="Add Document" id="document-btn">
+                            <span class="material-symbols-rounded">description</span>
+                        </button>
+                    </div>
+                    <div class="modal-post">
+                        <button class="action-btn" data-tooltip="Schedule Post">
+                            <span class="material-symbols-rounded">schedule</span>
+                        </button>
+                        <button class="post-btn">Posting</button>
                     </div>
                 </div>
             </div>
