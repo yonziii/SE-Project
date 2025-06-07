@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="upload-lomba.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+                <img src="./asset/yonzi.png" alt="Profile Picture" class="header-profile">
+            </div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <a href="/profile.html" class="profile">
+            <div class="profile-header">
+                <img src="./asset/yonzi.png" alt="Profile Picture">
+                <div class="profile-info">
+                    <h3>John Doe</h3>
+                    <p>@johndoe21</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="number">3</span>
+                    <span class="label">Teams</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">10</span>
+                    <span class="label">Invites</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">2</span>
+                    <span class="label">Post</span>
+                </div>
+            </div>
+        </a>
+
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">home</span>
+                    <span class="text nav-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">social_leaderboard</span>
+                    <span class="text nav-text">Competitions</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">maps_ugc</span>
+                    <span class="text nav-text">Messages</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="#">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="text nav-text">People</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">settings</span>
+                    <span class="text nav-text">Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="last-visited">
+            <h4>Last Visited</h4>
+            <ul class="visited-items">
+                <li class="visited-item">
+                    <div class="purple-square"></div>
+                    <span>SDIC Competition</span>
+                </li>
+                <li class="visited-item">
+                    <div class="blue-square"></div>
+                    <span>Sambat Coding</span>
+                </li>
+                <li class="visited-item">
+                    <div class="green-square"></div>
+                    <span>Speech Competition</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
+        <h1 class="page-title">Upload Competition</h1>
+
+        <div class="form-container">
+            <div class="form-section">
+                <h2 class="section-title">Upload Poster</h2>
+                <div class="upload-box" id="upload-box">
+                    <div class="upload-area" id="drop-zone">
+                        <span class="material-symbols-rounded">upload</span>
+                        <p>Drag and drop your file here or</p>
+                        <p>Max 10 MB, PNG, JPEG, MP3, MP4</p>
+                        <label for="file-input" class="explore-btn">Explore File</label>
+                        <input type="file" id="file-input" hidden accept=".png,.jpg,.jpeg,.mp3,.mp4">
+                    </div>
+                    <div class="file-preview" id="file-preview" style="display: none;">
+                        <div class="file-info">
+                            <span class="material-symbols-rounded file-icon">description</span>
+                            <div class="file-details">
+                                <p class="file-name" id="file-name"></p>
+                                <p class="file-size" id="file-size"></p>
+                                <div class="upload-progress">
+                                    <div class="progress-bar" id="progress-bar"></div>
+                                    <span class="progress-text" id="progress-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="remove-file" id="remove-file">
+                            <div class="close-icon">
+                                <span class="material-symbols-rounded">close</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Participation Eligibility</h2>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="eligibility" value="general" checked>
+                        <div class="radio-content">
+                            <h3>General</h3>
+                            <p>Open to all individuals, regardless of age, education level or affiliation</p>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="eligibility" value="school">
+                        <div class="radio-content">
+                            <h3>School</h3>
+                            <p>Limited to students currently enrolled in primary or secondary educational institutions</p>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="eligibility" value="university">
+                        <div class="radio-content">
+                            <h3>University</h3>
+                            <p>Restricted to students presently attending a college or university</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Competition Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Category (Select multiple)</label>
+                        <div class="category-container">
+                            <div class="category-input" id="category-input">
+                                <div class="selected-categories" id="selected-categories"></div>
+                                <span class="category-placeholder">Select categories</span>
+                                <span class="material-symbols-rounded">expand_more</span>
+                            </div>
+                            <div class="category-dropdown" id="category-dropdown">
+                                <div class="category-option" data-value="technology">Technology</div>
+                                <div class="category-option" data-value="business">Business</div>
+                                <div class="category-option" data-value="design">Design</div>
+                                <div class="category-option" data-value="programming">Programming</div>
+                                <div class="category-option" data-value="data-science">Data Science</div>
+                                <div class="category-option" data-value="artificial-intelligence">Artificial Intelligence</div>
+                                <div class="category-option" data-value="marketing">Marketing</div>
+                                <div class="category-option" data-value="entrepreneurship">Entrepreneurship</div>
+                                <div class="category-option" data-value="robotics">Robotics</div>
+                                <div class="category-option" data-value="iot">Internet of Things</div>
+                                <div class="category-option" data-value="cybersecurity">Cybersecurity</div>
+                                <div class="category-option" data-value="ui-ux">UI/UX Design</div>
+                                <div class="category-option" data-value="mobile-dev">Mobile Development</div>
+                                <div class="category-option" data-value="web-dev">Web Development</div>
+                                <div class="category-option" data-value="game-dev">Game Development</div>
+                                <div class="category-option" data-value="cloud">Cloud Computing</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Competition Scope</label>
+                        <select>
+                            <option value="" disabled selected>Select scope</option>
+                            <option value="regional">Regional</option>
+                            <option value="national">National</option>
+                            <option value="international">International</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Participant</label>
+                        <select id="participant-type">
+                            <option value="" disabled selected>Select participant type</option>
+                            <option value="individual">Individual</option>
+                            <option value="team">Team</option>
+                        </select>
+                    </div>
+                    <div id="team-size-inputs" class="team-size-container" style="display: none;">
+                        <div class="form-group">
+                            <label>Minimum Team Size</label>
+                            <input type="number" min="1" placeholder="Min participants">
+                        </div>
+                        <div class="form-group">
+                            <label>Maximum Team Size</label>
+                            <input type="number" min="1" placeholder="Max participants">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Entry Fee</label>
+                        <select id="entry-fee-type">
+                            <option value="" disabled selected>Select fee type</option>
+                            <option value="free">Free</option>
+                            <option value="paid">Paid</option>
+                        </select>
+                    </div>
+
+                    <div id="fee-amount-input" class="form-group" style="display: none;">
+                        <label>Fee Amount (Rp)</label>
+                        <input type="number" min="0" placeholder="Enter fee amount">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Organizer Name</label>
+                        <input type="text" placeholder="Enter organizer name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Competition Website</label>
+                        <input type="url" placeholder="https://example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="form-group description-group">
+                        <label>Description</label>
+                        <textarea placeholder="Enter competition description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <label for="submit" class="submit-btn">Submit</label>
+        </div>
+    </div>
+    <script src="upload-lomba.js"></script>
+</body>
+</html>
