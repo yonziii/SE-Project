@@ -305,10 +305,22 @@ body > .content {
     gap: 12px;
 }
 
+.chat-user-info a {
+    display: block;
+    text-decoration: none;
+}
+
+.chat-user-info a:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
 .chat-user-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .chat-header h3 {
