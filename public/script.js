@@ -54,7 +54,7 @@ if (signupForm) {
                     'Content-Type': 'application/json',
                 },
                 // Send a fixed 'user' role
-                body: JSON.stringify({ email, password, role: 'user' }),
+                body: JSON.stringify({ email, password, roles: ['user'] }),
             });
 
             const data = await response.json();

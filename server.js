@@ -3,30 +3,46 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('./config/db');
 const authRoutes = require('./routes/auth');
+const competitionsRoutes = require('./routes/competitions');
 const cors = require('cors');
 
 const app = express();
 
-app.use(cors());                     // enable CORS for all routes
+// 1) Enable CORS (so your front-end can call the API)
+app.use(cors({
+  origin: true,   // allow any origin, or replace with specific URL(s)
+  credentials: true
+}));
 
-app.use(express.json());             // parse JSON bodies
+// 2) Parse JSON bodies
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public'))); // serve static files from 'public' directory
 
-app.use('/api/auth', authRoutes);    // mount auth routes
 
+
+// 3) Authentication routes (signup / signin)
+app.use('/api/auth', authRoutes);
+
+// 4) Competition submission route
+app.use('/api/competitions', competitionsRoutes);
+
+// 5) Serve static frontend files from 'public/'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 6) Wildcard route to serve your frontend's index (if you want SPA behavior)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'home.html'));
 });
 
-// Global error handler (simplest form)
+// 7) Global error handler
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ message: 'Internal server error' });
 });
 
+// 8) Sync database models and start the server
 const PORT = process.env.PORT || 3000;
-sequelize.sync({ alter: true })      // sync models to DB
+sequelize.sync({ alter: true })
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
