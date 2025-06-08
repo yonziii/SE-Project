@@ -24,3 +24,16 @@ document.querySelectorAll('.friend-request-btn').forEach(button => {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle card clicks
+    const cards = document.querySelectorAll('.person-card');
+    cards.forEach(card => {
+        const link = card.querySelector('.card-link');
+        card.addEventListener('click', (e) => {
+            // Don't trigger if clicking the button
+            if (!e.target.closest('.friend-request-btn')) {
+                link.click();
+            }
+        });
+    });
+});
