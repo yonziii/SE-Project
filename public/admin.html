@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Dashboard - TemanLomba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+            </div>
+            <img src="https://i.pravatar.cc/100?img=8" alt="Profile Picture" class="header-profile">
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <nav class="sidebar">
+            <a href="#" class="profile">
+                <div class="profile-header">
+                    <img src="https://i.pravatar.cc/100?img=7" alt="Profile Picture">
+                    <div class="profile-info">
+                        <h3>John Doe</h3>
+                        <p>@admin</p>
+                    </div>
+                </div>
+            </a>
+
+            <ul class="menu-items">
+                <li class="menu-item active">
+                    <a href="#">
+                        <span class="material-symbols-rounded">dashboard</span>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admincompetitions.html">
+                        <span class="material-symbols-rounded">emoji_events</span>
+                        <span class="text nav-text">Competitions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">group</span>
+                        <span class="text nav-text">User Management</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">flag</span>
+                        <span class="text nav-text">Reports</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">analytics</span>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">settings</span>
+                        <span class="text nav-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section class="dashboard-stats-section">
+                <div class="card stat-card">Total Competitions <div class="stat-value">1,029</div></div>
+                <div class="card stat-card">Review Pending <div class="stat-value">152</div></div>
+                <div class="card stat-card">Active Users <div class="stat-value">20,789</div></div>
+                <div class="card stat-card">New Users This Week <div class="stat-value">1,098</div></div>
+                <div class="card stat-card">Reports Pending <div class="stat-value">54</div></div>
+                <div class="card stat-card">Support Requests <div class="stat-value">27</div></div>
+            </section>
+
+            <section class="graph-and-activity-section">
+                <div class="graph card">
+                    <h3>Active Users</h3>
+                    <canvas id="userChart"></canvas>
+                </div>
+                <div class="graph card">
+                    <h3>New Users This Week</h3>
+                    <canvas id="newUsersChart"></canvas>
+                </div>
+                <div class="activity card">
+                    <h3>Most Activity</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Name</th><th>Activity</th><th>Like</th><th>Share</th><th>Teams</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TechSprint 2025</td><td>1240</td><td>312</td><td>94</td><td>28</td></tr>
+                            <tr><td>Code Clash</td><td>960</td><td>198</td><td>76</td><td>21</td></tr>
+                            <tr><td>Design Rush</td><td>730</td><td>142</td><td>61</td><td>17</td></tr>
+                            <tr><td>Hack the Future</td><td>1520</td><td>405</td><td>110</td><td>34</td></tr>
+                            <tr><td>Data Duel</td><td>645</td><td>96</td><td>43</td><td>12</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="approvals-section">
+                <div class="card">
+                    <h4>Approval SLA Compliance</h4>
+                    <div class="compliance-data">
+                        <p><span class="stat-value">78%</span><span class="label">All time</span></p>
+                        <p><span class="stat-value">84%</span><span class="label">Last 30 Days</span></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Average Approval Time</h4>
+                    <div class="approval-time-data">
+                        <p><span class="stat-value">19H</span><span class="label">All time</span></p>
+                        <p><span class="stat-value">22H</span><span class="label">Last 30 Days</span></p>
+                    </div>
+                </div>
+                <div class="card action-required">
+                    <h4>Action Required <a href="#" class="view-all">View all</a></h4>
+                    <table>
+                        <thead>
+                            <tr><th>ID</th><th>Name</th><th>Submitted By</th><th>Date</th><th>Type</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>01829</td><td>John Doe</td><td><img src="https://i.pravatar.cc/30?u=1"> Muhammad Ryon</td><td>Apr 27</td><td>Report</td></tr>
+                            <tr><td>01000</td><td>ICPC 2025</td><td><img src="https://i.pravatar.cc/30?u=2"> Cut Nur Azizah</td><td>Apr 28</td><td>Competition</td></tr>
+                            <tr><td>01024</td><td>Prototathon 2025</td><td><img src="https://i.pravatar.cc/30?u=3"> Fabian Daniel</td><td>May 1</td><td>Competition</td></tr>
+                            <tr><td>01980</td><td>Aslam</td><td><img src="https://i.pravatar.cc/30?u=4"> Selvia Maraya</td><td>May 1</td><td>Report</td></tr>
+                            <tr><td>03422</td><td>Jane Doe</td><td><img src="https://i.pravatar.cc/30?u=5"> Firly Iwani H.</td><td>May 1</td><td>Report</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
