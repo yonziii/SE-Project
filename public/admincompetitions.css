@@ -284,10 +284,11 @@ header {
 /* ----------Content (Main Content Area)----------- */
 .content {
     margin-left: 250px;
-    flex-grow: 1;
+    flex: 1;
     padding: 32px;
     box-sizing: border-box;
 }
+
 
 /* Card Styles (used throughout content sections) */
 .card {
