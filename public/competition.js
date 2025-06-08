@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     list.innerHTML = ''; // Clear existing cards
 
-    competitions.forEach(comp => {
+    // Only show competitions with status 'active'
+    const activeCompetitions = competitions.filter(comp => comp.status === 'active');
+
+    activeCompetitions.forEach(comp => {
       const card = document.createElement('div');
       card.className = 'competition-card-main';
       card.innerHTML = `

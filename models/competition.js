@@ -75,7 +75,7 @@ const Competition = sequelize.define('Competition', {
 		allowNull: false
 	},
 	status: {
-		type: DataTypes.ENUM('pending', 'approved', 'rejected', 'completed'),
+		type: DataTypes.ENUM('pending', 'active', 'rejected', 'completed'),
 		defaultValue: 'pending'
 	},
 	reviewed_at: {

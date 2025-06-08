@@ -6,6 +6,10 @@ const authRoutes = require('./routes/auth');
 const competitionsRoutes = require('./routes/competitions');
 const cors = require('cors');
 
+const Post = require('./models/post');
+const Attachment = require('./models/attachment');
+
+
 const app = express();
 
 // 1) Enable CORS (so your front-end can call the API)
@@ -25,6 +29,13 @@ app.use('/api/auth', authRoutes);
 
 // 4) Competition submission route
 app.use('/api/competitions', competitionsRoutes);
+
+// Post and Attachment models should be imported after sequelize is initialized
+// and before defining associations
+Post.hasMany(Attachment, { foreignKey: 'post_id', as: 'attachments' });
+Attachment.belongsTo(Post, { foreignKey: 'post_id' });
+
+app.use('/api/posts', require('./routes/posts'));
 
 // 5) Serve static frontend files from 'public/'
 app.use(express.static(path.join(__dirname, 'public')));

@@ -2,7 +2,6 @@
 const Competition = require('../models/competition');
 
 exports.createCompetition = async (req, res, next) => {
-  console.log('Received body:', req.body);
 	try {
 		// 1) Destructure all form fields from the JSON body
 		const {
@@ -89,4 +88,19 @@ exports.getCompetitions = async (req, res, next) => {
     console.error(err);
     res.status(500).json({ message: 'Failed to load competitions' });
   }
+};
+
+exports.getCompetitionById = async (req, res) => {
+    const comp = await Competition.findByPk(req.params.id);
+    if (!comp) return res.status(404).json({ message: 'Not found' });
+	res.set('Cache-Control', 'no-store');
+    res.json(comp);
+};
+
+exports.updateCompetitionStatus = async (req, res) => {
+    const comp = await Competition.findByPk(req.params.id);
+    if (!comp) return res.status(404).json({ message: 'Not found' });
+    comp.status = req.body.status;
+    await comp.save();
+    res.json({ message: 'Status updated', status: comp.status });
 };

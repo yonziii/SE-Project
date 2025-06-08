@@ -110,7 +110,7 @@
         </div>
     </nav>
     <div class="content">
-        <div class="feed">
+        <div class="post-container">
             <div class="create-post">
                 <div class="create-post-header">
                     <img src="./asset/yonzi.png" alt="Profile Picture">
@@ -166,34 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="post">
-                <div class="post-header">
-                    <img src="./asset/yonzi.png" alt="Profile Picture">
-                    <div class="post-info">
-                        <div class="post-author">
-                            <h4>John Doe</h4>
-                            <p>•</p>
-                            <span class="follow-btn">Follow</span>
-                            <span class="material-symbols-rounded">more_horiz</span>
-                        </div>
-                        <p class="post-time">20 minutes ago</p>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>🏆 Akhirnya Juara, Bos! 🏆<br>
-                    EZ Banget dek 🔥</p>
-                    <br>
-                    <p>Gokil sih, perjuangan panjang, begadang tiap malam, plus jungkir balik ngurus ini itu akhirnya terbayar lunas! 😆🔥 Bukan cuma soal menang, tapi perjalanan dan pelajaran yang paling berharga!Big thanks buat semua yang support, kasih semangat, dan nemenin prosesnya! Tanpa kalian, gak mungkin sampai titik ini! 🚀💯 Next? Gas lagi ke level yang lebih tinggi! 😎</p>
-                    <br>
-                    <p>#MenangGakNihBos #PerjuanganGakNgegas #PantangPulangSebelumJuara #EffortGakNgekhianatinHasil</p>
-                    <img src="./asset/feeds1.jpg" alt="Competition Win" class="post-image">
-                </div>
-                <div class="post-actions">
-                    <button onclick="likePost()"><i class="far fa-heart"></i> 1959</button>
-                    <button onclick="commentPost()"><i class="far fa-comment"></i> 97</button>
-                    <button onclick="retweetPost()"><i class="fas fa-retweet"></i> 1959</button>
-                    <button onclick="sharePost()"><i class="far fa-share-square"></i> Share</button>
-                </div>
+            <div class = "feed">
             </div>
         </div>
         <div class="right-sidebar">
@@ -290,7 +263,7 @@
     </div>
     <div class="modal" id="create-post-modal">
         <div class="modal-content">
-            <input type="file" id="image-input" accept="image/*" style="display: none;">
+            <input type="file" id="image-input" accept="image/*" multiple style="display: none;">
             <input type="file" id="video-input" accept="video/*" style="display: none;">
             <input type="file" id="document-input" accept=".pdf,.doc,.docx" style="display: none;">
             <div class="modal-header">
@@ -330,6 +303,9 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.7.0/mammoth.browser.min.js"></script>
     <script src="home.js"></script>
 </body>
 </html>
