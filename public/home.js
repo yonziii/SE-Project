@@ -250,3 +250,56 @@ dropdownItems.forEach(item => {
 privacyDropdown.addEventListener('click', (e) => {
     e.stopPropagation();
 });
+
+// Add this after your existing modal code
+const postBtn = document.querySelector('.post-btn');
+
+postBtn.addEventListener('click', () => {
+    const textarea = document.querySelector('.modal-body textarea');
+    const filePreview = document.getElementById('file-preview');
+    
+    // Basic validation
+    if (!textarea.value.trim() && !filePreview.hasChildNodes()) {
+        showNotification('Please add some content or media to your post', 'error');
+        return;
+    }
+
+    // Show success notification
+    showNotification('Post created successfully!', 'success');
+
+    // Close modal and redirect after a short delay
+    setTimeout(() => {
+        closeModalHandler();
+        window.location.href = 'home.html';
+    }, 2000);
+});
+
+// Add notification function
+function showNotification(message, type) {
+    // Remove existing notification if any
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="material-symbols-rounded">${type === 'success' ? 'check_circle' : 'error'}</span>
+            <p>${message}</p>
+        </div>
+    `;
+
+    // Add to document
+    document.body.appendChild(notification);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
