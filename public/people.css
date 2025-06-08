@@ -342,6 +342,7 @@ header {
     transition: all 0.2s ease-in-out;
     border: 1px solid transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
 }
 
 .person-card:hover {
@@ -412,6 +413,8 @@ header {
     gap: 8px;
     transition: all 0.2s ease;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .friend-request-btn.followed {
@@ -436,4 +439,13 @@ header {
 
 .friend-request-btn.followed span {
     font-variation-settings: 'FILL' 1;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
 }
