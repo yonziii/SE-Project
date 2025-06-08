@@ -267,9 +267,45 @@ header {
 }
 
 /* ----------Content----------- */
+
+/* Add these styles for the back button */
+.back-btn-container {
+    position: fixed;
+    top: 100px; /* Position below the header */
+    left: 290px; /* Position to the right of the sidebar */
+    z-index: 90;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sidebar-bg);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.back-btn .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+    color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(29, 196, 215, 0.2);
+}
+
+/* Adjust the content top margin to accommodate the back button */
 .content {
     margin-left: 250px;
-    margin-top: 80px;
+    margin-top: 120px; /* Increased from 80px to give space for back button */
     padding: 32px;
     width: calc(100% - 250px);
 }
@@ -720,4 +756,47 @@ input[type="date"] {
 }
 .submit-btn:hover {
     background-color: #17a6b8;
+}
+
+/* Add these styles for validation and notifications */
+.error {
+    border-color: #ff4444 !important;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notification.error {
+    background-color: #ff4444;
+    color: white;
+}
+
+.notification.success {
+    background-color: #00C851;
+    color: white;
+}
+
+.notification ul {
+    margin: 10px 0 0 20px;
+    font-size: 14px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

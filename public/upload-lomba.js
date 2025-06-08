@@ -206,4 +206,188 @@ document.addEventListener('DOMContentLoaded', function() {
             feeAmountInput.style.display = 'none';
         }
     });
+
+    // Form validation
+    const submitBtn = document.querySelector('.submit-btn');
+    const form = document.querySelector('.form-container');
+
+    submitBtn.addEventListener('click', validateAndSubmit);
+
+    function validateAndSubmit(e) {
+        e.preventDefault();
+        let isValid = true;
+        const errors = [];
+
+        // Check file upload
+        const filePreview = document.getElementById('file-preview');
+        if (filePreview.style.display === 'none') {
+            errors.push("Please upload a competition poster");
+            isValid = false;
+        }
+
+        // Check title
+        const title = document.getElementById('competition-title');
+        if (!title.value.trim()) {
+            title.classList.add('error');
+            errors.push("Title is required");
+            isValid = false;
+        }
+
+        // Check categories
+        if (selectedValues.size === 0) {
+            document.querySelector('.category-container').classList.add('error');
+            errors.push("Please select at least one category");
+            isValid = false;
+        }
+
+        // Check competition scope
+        const scope = document.getElementById('competition-scope');
+        if (!scope.value) {
+            scope.classList.add('error');
+            errors.push("Competition scope is required");
+            isValid = false;
+        }
+
+        // Check participant type and team size
+        const participantType = document.getElementById('participant-type');
+        if (!participantType.value) {
+            participantType.classList.add('error');
+            errors.push("Participant type is required");
+            isValid = false;
+        }
+
+        if (participantType.value === 'team') {
+            const minSize = document.getElementById('min-participants');
+            const maxSize = document.getElementById('max-participants');
+            
+            if (!minSize.value || !maxSize.value) {
+                minSize.classList.add('error');
+                maxSize.classList.add('error');
+                errors.push("Team size limits are required");
+                isValid = false;
+            } else if (parseInt(minSize.value) > parseInt(maxSize.value)) {
+                minSize.classList.add('error');
+                maxSize.classList.add('error');
+                errors.push("Minimum team size cannot be greater than maximum");
+                isValid = false;
+            }
+        }
+
+        // Check entry fee
+        const entryFeeType = document.getElementById('entry-fee-type');
+        if (!entryFeeType.value) {
+            entryFeeType.classList.add('error');
+            errors.push("Entry fee type is required");
+            isValid = false;
+        }
+
+        if (entryFeeType.value === 'paid') {
+            const feeAmount = document.getElementById('fee-amount');
+            if (!feeAmount.value || feeAmount.value <= 0) {
+                feeAmount.classList.add('error');
+                errors.push("Valid fee amount is required");
+                isValid = false;
+            }
+        }
+
+        // Check organizer name
+        const organizerName = document.getElementById('organizer-name');
+        if (!organizerName.value.trim()) {
+            organizerName.classList.add('error');
+            errors.push("Organizer name is required");
+            isValid = false;
+        }
+
+        // Check website URL
+        const website = document.getElementById('competition-website');
+        if (website.value && !isValidUrl(website.value)) {
+            website.classList.add('error');
+            errors.push("Please enter a valid website URL");
+            isValid = false;
+        }
+
+        // Check dates
+        const startDate = document.getElementById('start-date');
+        const endDate = document.getElementById('end-date');
+        
+        if (!startDate.value || !endDate.value) {
+            if (!startDate.value) startDate.classList.add('error');
+            if (!endDate.value) endDate.classList.add('error');
+            errors.push("Both start and end dates are required");
+            isValid = false;
+        } else {
+            const start = new Date(startDate.value);
+            const end = new Date(endDate.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (start < today) {
+                startDate.classList.add('error');
+                errors.push("Start date cannot be in the past");
+                isValid = false;
+            }
+            
+            if (end <= start) {
+                endDate.classList.add('error');
+                errors.push("End date must be after start date");
+                isValid = false;
+            }
+        }
+
+        // Check description
+        const description = document.getElementById('competition-description');
+        if (!description.value.trim()) {
+            description.classList.add('error');
+            errors.push("Description is required");
+            isValid = false;
+        }
+
+        // Handle validation result
+        if (!isValid) {
+            showErrorNotification(errors);
+        } else {
+            showSuccessNotification();
+            setTimeout(() => {
+                window.location.href = 'competition.html';
+            }, 2000);
+        }
+    }
+
+    // Helper functions
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function showErrorNotification(errors) {
+        const notification = document.createElement('div');
+        notification.className = 'notification error';
+        notification.innerHTML = `
+            <h3>Please fix the following errors:</h3>
+            <ul>
+                ${errors.map(error => `<li>${error}</li>`).join('')}
+            </ul>
+        `;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 5000);
+    }
+
+    function showSuccessNotification() {
+        const notification = document.createElement('div');
+        notification.className = 'notification success';
+        notification.textContent = 'Competition successfully uploaded! Redirecting...';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+    }
+
+    // Remove error class on input
+    document.querySelectorAll('input, select, textarea').forEach(element => {
+        element.addEventListener('input', () => {
+            element.classList.remove('error');
+        });
+    });
 });
