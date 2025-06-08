@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemanLomba - Admin Competitions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="admincompetitions.css" />
+    </head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+            </div>
+            <img src="https://i.pravatar.cc/100?img=9" alt="Profile Picture" class="header-profile">
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <nav class="sidebar">
+            <a href="#" class="profile">
+                <div class="profile-header">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="Profile Picture">
+                    <div class="profile-info">
+                        <h3>John Doe</h3>
+                        <p>@admin</p>
+                    </div>
+                </div>
+            </a>
+
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <a href="admin.html">
+                        <span class="material-symbols-rounded">dashboard</span>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="admincompetitions.html">
+                        <span class="material-symbols-rounded">emoji_events</span>
+                        <span class="text nav-text">Competitions</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">group</span>
+                        <span class="text nav-text">User Management</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">flag</span>
+                        <span class="text nav-text">Reports</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">analytics</span>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#">
+                        <span class="material-symbols-rounded">settings</span>
+                        <span class="text nav-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h2 class="page-title">Competitions</h2>
+
+            <div class="table-controls">
+                <div class="status-tabs">
+                    <button class="tab active" data-status-filter="all">All</button>
+                    <button class="tab" data-status-filter="active">Active</button>
+                    <button class="tab" data-status-filter="pending">Pending</button>
+                    <button class="tab" data-status-filter="rejected">Rejected</button>
+                    <button class="tab" data-status-filter="completed">Completed</button>
+                </div>
+                <div class="table-actions">
+                    <div class="search-bar table-search-bar">
+                        <span class="material-symbols-rounded">search</span>
+                        <input type="text" placeholder="Search..." class="search-input">
+                    </div>
+                    <button class="action-button"><span class="material-symbols-rounded">download</span></button>
+                    <button class="action-button"><span class="material-symbols-rounded">filter_alt</span> Filter</button>
+                </div>
+            </div>
+
+            <table class="competition-table card">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" /></th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Submitted by</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="competition-body">
+                    <tr data-status="pending">
+                        <td><input type="checkbox" /></td>
+                        <td>C08940</td>
+                        <td>International Competition</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=muhammadryon" /> Muhammad Ryon D.</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td><input type="checkbox" /></td>
+                        <td>C08941</td>
+                        <td>International Competition</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=cutnurazizah" /> Cut Nur Azizah</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr data-status="pending">
+                        <td><input type="checkbox" /></td>
+                        <td>C08942</td>
+                        <td>Code Battle 2025</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=fabian" /> Fabian Daniel</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                    <tr data-status="rejected">
+                        <td><input type="checkbox" /></td>
+                        <td>C08943</td>
+                        <td>Design Sprint</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=selviamaraya" /> Selvia Maraya</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status rejected">Rejected</span></td>
+                    </tr>
+                    <tr data-status="completed">
+                        <td><input type="checkbox" /></td>
+                        <td>C08944</td>
+                        <td>Hackathon X</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=firlyiwani" /> Firly Iwani H.</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td><input type="checkbox" /></td>
+                        <td>C08945</td>
+                        <td>Data Science Challenge</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=johnsmith" /> John Smith</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                    <tr data-status="completed">
+                        <td><input type="checkbox" /></td>
+                        <td>C08946</td>
+                        <td>Game Dev Jam</td>
+                        <td>05/12/2025 - 13:45</td>
+                        <td><img class="avatar" src="https://i.pravatar.cc/30?u=janesmith" /> Jane Smith</td>
+                        <td>06/06/2025</td>
+                        <td>08/08/2025</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-footer">
+                <div class="entries-info">
+                    Showing 1-8 of 594 entries
+                </div>
+                <div class="pagination">
+                    <a href="#" class="page-link prev"><span class="material-symbols-rounded">chevron_left</span></a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <a href="#" class="page-link">5</a>
+                    <span>...</span>
+                    <a href="#" class="page-link">12</a>
+                    <a href="#" class="page-link next"><span class="material-symbols-rounded">chevron_right</span></a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admincompetitions.js"></script>
+</body>
+</html>
