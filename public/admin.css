@@ -1,0 +1,501 @@
+/* admin.css */
+:root {
+    --primary-color: #1DC4D7;
+    --orange-color: #ff4500;
+    --body-bg: #F4F7F9;
+    --sidebar-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #7e7e9f;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Standard shadow for cards/elements */
+    --light-blue-shadow: 0 4px 20px rgba(29, 196, 215, 0.1); /* Specific shadow for profile */
+
+    /* Status Colors (kept from previous definition for clarity) */
+    --status-pending: #ffc107;
+    --status-active: #28a745;
+    --status-completed: #007bff;
+    --status-rejected: #dc3545;
+}
+
+/* --- Penambahan di sini untuk memastikan warna primer bisa dibaca JS --- */
+/* Sebuah elemen helper tersembunyi untuk mengambil warna primer */
+.js-primary-color-helper {
+    display: none;
+    color: var(--primary-color);
+}
+/* --- Akhir Penambahan --- */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif; /* Pastikan font ini digunakan */
+}
+
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden; /* Mencegah overflow horizontal yang tidak disengaja */
+}
+
+/* ----------Header (Fixed at Top)----------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.logo .teman {
+    color: var(--primary-color);
+}
+
+.logo .lomba {
+    color: var(--orange-color);
+}
+
+.header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 32px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+}
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icons .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+.header-icons .material-symbols-rounded:hover {
+    color: var(--primary-color);
+}
+
+.header-profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+/* ----------Main Layout Container (Wraps Sidebar + Content)----------- */
+.main-layout {
+    display: flex;
+    width: 100%;
+    padding-top: 80px; /* Ini adalah perbaikan utama! Memberikan ruang untuk header fixed */
+    box-sizing: border-box;
+}
+
+/* ----------Sidebar (Fixed beside content)----------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px; /* Below the header */
+    bottom: 0;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+    overflow-y: hidden; /* HIDDEN SCROLLBAR */
+}
+
+/* Profile section in sidebar */
+.profile {
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--sidebar-bg); /* Menggunakan sidebar-bg untuk latar belakang profil */
+    box-shadow: var(--light-blue-shadow);
+    margin: 0 8px 32px 8px; /* Adjusted margins */
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between profile header and stats (if any) */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+.profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(29, 196, 215, 0.15);
+}
+
+.profile-header { /* For the image, name, and @admin part */
+    display: flex;
+    flex-direction: column; /* Stack image, name, @admin */
+    align-items: center;
+    gap: 8px; /* Space between image and text */
+}
+
+.profile img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: center; /* Center name and @admin */
+}
+
+.profile-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px; /* Space between name and @admin */
+    color: var(--text-primary);
+}
+
+.profile-info p {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+/* Sidebar Menu */
+.menu-items { /* This is the ul */
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 0; /* No margin below menu if last-visited is gone */
+    flex-grow: 1; /* Allow menu to take available space */
+}
+
+.menu-item {
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-item .material-symbols-rounded {
+    margin-right: 14px;
+    font-size: 22px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.text.nav-text {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.menu-item:not(.active):hover {
+    background-color: rgba(29, 196, 215, 0.1);
+    transform: translateX(4px);
+}
+
+.menu-item:not(.active):hover .material-symbols-rounded,
+.menu-item:not(.active):hover .text.nav-text {
+    color: var(--primary-color);
+}
+
+.menu-item.active {
+    background-color: var(--primary-color);
+}
+
+.menu-item.active a {
+    color: white;
+}
+
+.menu-item.active .material-symbols-rounded,
+.menu-item.active .text.nav-text {
+    color: white;
+}
+
+/* Last Visited Section (REMOVED from HTML and CSS) */
+
+/* ----------Content (Main Content Area)----------- */
+.content {
+    margin-left: 250px; /* Space for the fixed sidebar */
+    flex-grow: 1;
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+/* Card Styles (used throughout content sections) */
+.card {
+    background-color: var(--sidebar-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+/* Dashboard Specific Sections */
+.dashboard-stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-stats-section .stat-card {
+    text-align: center;
+    padding: 1.2rem;
+}
+.dashboard-stats-section .stat-card .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.graph-and-activity-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.graph h3, .activity h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.graph canvas {
+    width: 100%;
+    height: 200px;
+}
+
+.activity table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.activity th,
+.activity td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    color: var(--text-primary);
+}
+
+.approvals-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 1rem;
+}
+
+.approvals-section h4 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.compliance-data,
+.approval-time-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-top: 15px;
+}
+
+.compliance-data p,
+.approval-time-data p {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.compliance-data .stat-value,
+.approval-time-data .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    font-style: normal; /* Not italic */
+}
+
+.compliance-data .label,
+.approval-time-data .label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.action-required table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.action-required th,
+.action-required td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    color: var(--text-primary);
+}
+
+.action-required img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+.view-all {
+    float: right;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+    .header-left, .header-right, .header-middle {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+    .search-bar {
+        max-width: 90%;
+    }
+
+    .main-layout {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 0;
+        padding: 1rem;
+        flex-direction: row; /* Sidebar items in a row */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
+        overflow-y: hidden; /* Keep hidden on mobile */
+    }
+    /* Hide the profile and last-visited sections for responsive */
+    .sidebar .profile,
+    .sidebar .last-visited {
+        display: none;
+    }
+    .sidebar .menu-items {
+        display: flex; /* Ensure menu items are visible and in a row */
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+    }
+    .sidebar .menu-item {
+        margin: 0.5rem; /* Space between menu items when wrapped */
+    }
+
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem;
+        margin-top: 0;
+    }
+
+    .dashboard-stats-section,
+    .graph-and-activity-section,
+    .approvals-section {
+        grid-template-columns: 1fr;
+    }
+    .graph-and-activity-section .card,
+    .approvals-section .card {
+        padding: 1rem;
+    }
+    .compliance-data, .approval-time-data {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* No additional changes needed here for trimmed sidebar, as they are handled by 1024px media query or base styles */
+}
