@@ -432,15 +432,19 @@ button:hover{
     padding-top: 80px;
 }
 
-
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
 .tags span {
     display: inline-block;
-    background: var(--body-color);
-    color: var(--primary-color);
     padding: 4px 10px;
     margin: 4px 0 4px 0;
     border-radius: 12px;
     font-size: 12px;
+    gap: 8px;
 }
 
 .white-section {
@@ -563,6 +567,8 @@ a {
     border-radius: 999px;
     font-size: 12px;
     font-weight: 500;
+    display: inline-block;
+    margin: 2px 4px 2px 0;
 }
 .side-box h2{
     padding: 15px 0;
@@ -676,7 +682,7 @@ a {
     /* display: block;  */
     margin: 20px auto; 
 }
-.section button{
+.join{
     background-color: var(--primary-color);
     border-style: none;
     color: white;

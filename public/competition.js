@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     activeCompetitions.forEach(comp => {
       const card = document.createElement('div');
       card.className = 'competition-card-main';
-      card.innerHTML = `
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        window.location.href = `detail.html?id=${comp.id}`;
+      });
+    card.innerHTML = `
         <div class="card-header-main">
           <img src="${comp.image_url}" alt="Competition Poster">
           <div class="card-info-main">
