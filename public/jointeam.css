@@ -1,0 +1,412 @@
+/* joinateam.css */
+:root {
+    --primary-color: #1DC4D7;
+    --orange-color: #ff4500;
+    --body-bg: #F4F7F9;
+    --sidebar-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #7e7e9f;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Standard shadow for cards/elements */
+    --light-blue-shadow: 0 4px 20px rgba(29, 196, 215, 0.1); /* Specific shadow for profile */
+
+    /* Status Colors (if needed, just for consistency) */
+    --status-pending: #ffc107;
+    --status-active: #28a745;
+    --status-completed: #007bff;
+    --status-rejected: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* ----------Header (Fixed at Top - Copied from admin.css)----------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.logo .teman {
+    color: var(--primary-color);
+}
+
+.logo .lomba {
+    color: var(--orange-color);
+}
+
+.header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 32px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+}
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icons .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 28px; /* Ditingkatkan sedikit untuk visibilitas dan agar tidak terpotong */
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 1; /* Sangat membantu untuk vertical alignment pada ikon font */
+    display: flex; /* Digunakan bersama align-items dan justify-content untuk pemusatan */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.header-icons .material-symbols-rounded:hover {
+    color: var(--primary-color);
+}
+
+.header-profile {
+    width: 36px; /* Ditingkatkan sedikit agar proporsional dengan ikon */
+    height: 36px; /* Ditingkatkan sedikit */
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------Main Content (Full Width - Join A Team Specific)----------- */
+/* Menghapus .main-layout dan .sidebar styles */
+.full-width-content { /* Nama kelas baru untuk konten full width */
+    margin-left: 0; /* Pastikan tidak ada margin dari sidebar */
+    flex-grow: 1; /* Ambil semua ruang yang tersedia */
+    padding: 32px; /* Padding konten seperti biasa */
+    box-sizing: border-box;
+    padding-top: 112px; /* Ruang untuk header fixed (80px header + 32px padding) */
+}
+
+/* Card Styles (Copied from admin.css) */
+.card {
+    background-color: var(--sidebar-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+/* ----------Join A Team Specific Styles ----------- */
+
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    /* padding-left: 0; /* Remove default padding if any */
+}
+
+.content-header .back-arrow {
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 8px; /* Make clickable area larger */
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.content-header .back-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content-header .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0; /* Remove default margin */
+    flex-grow: 1; /* Allow title to take available space */
+}
+
+.create-team-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.create-team-btn:hover {
+    background-color: #17a6b8; /* Slightly darker primary on hover */
+}
+
+.create-team-btn .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.team-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 300px min width */
+    gap: 24px; /* Gap between cards */
+}
+
+.team-card {
+    /* Inherits .card styles for background, padding, border-radius, box-shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push button to bottom */
+    height: auto; /* Allow height to adjust */
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.team-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex-grow: 1; /* Allow description to take space */
+}
+
+.team-members {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.team-members img {
+    width: 32px; /* Avatar size */
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--sidebar-bg); /* Border color same as card background */
+    object-fit: cover;
+    margin-left: -8px; /* Overlap avatars */
+}
+
+.team-members img:first-child {
+    margin-left: 0;
+}
+
+.team-info {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px; /* Space before button */
+}
+
+.request-to-join-btn {
+    background-color: var(--body-bg); /* Background matching page background */
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color); /* Primary border */
+    padding: 10px 20px;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    width: 100%; /* Full width button */
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.request-to-join-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* --- Notification Styles (Common for all pages - Copied from admin.css) --- */
+#notification-area {
+    position: fixed;
+    top: 20px; /* Posisi dari atas */
+    right: 20px; /* Posisi dari kanan */
+    z-index: 2000; /* Pastikan di atas elemen lain */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Jarak antar notifikasi jika ada banyak */
+    pointer-events: none; /* Allows clicks to pass through this area */
+}
+
+.notification-message {
+    background-color: var(--sidebar-bg); /* Latar belakang putih */
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow yang konsisten */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    min-width: 250px;
+    max-width: 350px;
+    pointer-events: all; /* Mengaktifkan kembali pointer events untuk notifikasi itu sendiri */
+    animation: slideIn 0.3s ease-out forwards, fadeOut 0.3s ease-out 4.7s forwards; /* Animasi masuk dan keluar */
+}
+
+.notification-message.success {
+    border-left: 4px solid #00C851; /* Border hijau */
+}
+
+.notification-message.error {
+    border-left: 4px solid #ff4444; /* Border merah */
+}
+
+.notification-message span.material-symbols-rounded { /* Icon di notifikasi */
+    font-size: 24px;
+    line-height: 1; /* Pastikan icon tidak terpotong */
+}
+
+.notification-message.success span.material-symbols-rounded {
+    color: #00C851;
+}
+
+.notification-message.error span.material-symbols-rounded {
+    color: #ff4444;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive (Copied from admin.css and adjusted for no sidebar) */
+@media screen and (max-width: 1024px) {
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+    .header-left, .header-right, .header-middle {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+    .search-bar {
+        max-width: 90%;
+    }
+
+    .full-width-content { /* Adjust padding for mobile/no sidebar */
+        padding-top: 100px; /* Smaller top padding when header wraps */
+        padding: 1.5rem; /* General padding */
+    }
+
+    /* Adjustments for content-header in responsive */
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .content-header .page-title {
+        text-align: center;
+        width: 100%;
+    }
+    .content-header .back-arrow {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+    .create-team-btn {
+        width: 100%;
+    }
+
+    .team-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    /* Notifikasi di responsive */
+    #notification-area {
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        align-items: center;
+    }
+    .notification-message {
+        width: 90%;
+        min-width: unset;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-header .page-title {
+        font-size: 24px;
+    }
+    .team-members img {
+        width: 28px;
+        height: 28px;
+    }
+}

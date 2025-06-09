@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make a Team - TemanLomba</title>
+    <!-- Google Fonts: Nunito Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <!-- Material Symbols Rounded Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="maketeam.css" />
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+            </div>
+            <img src="https://i.pravatar.cc/100?img=12" alt="Profile Picture" class="header-profile">
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Sidebar is not present in this Figma design, so we exclude it. -->
+        <!-- If you need sidebar on this page, copy from admin.html -->
+
+        <main class="content full-width-content">
+            <div class="content-header">
+                <span class="material-symbols-rounded back-arrow">arrow_back_ios</span>
+                <h2 class="page-title">Making Team</h2>
+            </div>
+
+            <div class="form-container card">
+                <div class="team-avatar-upload">
+                    <img id="teamAvatarPreview" src="https://placehold.co/100x100/eeeeee/aaaaaa?text=+" alt="Team Avatar">
+                    <label for="teamAvatarInput" class="upload-icon-overlay">
+                        <span class="material-symbols-rounded">camera_alt</span>
+                    </label>
+                    <input type="file" id="teamAvatarInput" accept="image/*" hidden>
+                </div>
+
+                <div class="form-group">
+                    <label for="teamName">Input Team's Name</label>
+                    <input type="text" id="teamName" placeholder="Your team's name">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Fill with the requirements that you have"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="participant">Participant</label>
+                    <select id="participant">
+                        <option value="" disabled selected>People</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="permission">Permission</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="allowRequests">
+                        <label for="allowRequests">Other Team to make people can accept another member request</label>
+                    </div>
+                </div>
+                <button class="make-team-btn">Make a team</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Area -->
+    <div id="notification-area"></div>
+
+    <script src="maketeam.js"></script>
+</body>
+</html>

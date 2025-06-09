@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Details - TemanLomba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="viewteam.css" />
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+            </div>
+            <img src="https://i.pravatar.cc/100?img=12"" alt="Profile Picture" class="header-profile">
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <main class="content full-width-content">
+            <div class="content-header">
+                <a href="detail.html">
+                    <span class="material-symbols-rounded back-arrow">arrow_back_ios</span>
+                </a>
+                
+                </div>
+
+            <div class="team-details-card card">
+                <div class="team-header-content"> <div class="team-logo-area"> <img src="./asset/four.png" alt="Team Logo" class="team-logo"> </div>
+                    <div class="team-text-area"> <h3>SDLC one goal</h3>
+                        <p class="team-description">held a meeting twice a week and make a website in HTML, CSS, and Javascript so we can finish this competition and become the winner wowowow</p>
+                        <a href="#" class="edit-description-link">Edit Description</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-join-requests card">
+                <h3>Team Join Request</h3>
+                <div class="request-list">
+                    <div class="request-item">
+                        <img src="https://i.pravatar.cc/40?u=ryon" alt="Member Avatar" class="request-avatar">
+                        <div class="request-info">
+                            <h4>Muhammad Ryon</h4>
+                            <p>Undergraduate Computer Science</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="accept-btn"><span class="material-symbols-rounded">check_circle</span></button>
+                            <button class="reject-btn"><span class="material-symbols-rounded">cancel</span></button>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <img src="https://i.pravatar.cc/40?u=joanne" alt="Member Avatar" class="request-avatar">
+                        <div class="request-info">
+                            <h4>Joanne Marcelina Buradi</h4>
+                            <p>Undergraduate Computer Science</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="accept-btn"><span class="material-symbols-rounded">check_circle</span></button>
+                            <button class="reject-btn"><span class="material-symbols-rounded">cancel</span></button>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <img src="https://i.pravatar.cc/40?u=firly" alt="Member Avatar" class="request-avatar">
+                        <div class="request-info">
+                            <h4>Firly Iwani</h4>
+                            <p>Undergraduate Computer Science</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="accept-btn"><span class="material-symbols-rounded">check_circle</span></button>
+                            <button class="reject-btn"><span class="material-symbols-rounded">cancel</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invite-people-section card">
+                <h3>Invite people to this competition</h3>
+                <div class="invite-link-container">
+                    <input type="text" id="inviteLink" value="TemanLomba/27685-sdlc-one-team.com" readonly>
+                    <button class="copy-link-btn"><span class="material-symbols-rounded">content_copy</span> Copy</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification-area"></div>
+
+    <script src="viewteam.js"></script>
+</body>
+</html>
