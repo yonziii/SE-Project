@@ -1,0 +1,442 @@
+/* createteam.css */
+:root {
+    --primary-color: #1DC4D7;
+    --orange-color: #ff4500;
+    --body-bg: #F4F7F9;
+    --sidebar-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #7e7e9f;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --light-blue-shadow: 0 4px 20px rgba(29, 196, 215, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* ----------Header (Fixed at Top - Copied from admin.css)----------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.logo .teman {
+    color: var(--primary-color);
+}
+
+.logo .lomba {
+    color: var(--orange-color);
+}
+
+.header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 32px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+}
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icons .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.header-icons .material-symbols-rounded:hover {
+    color: var(--primary-color);
+}
+
+.header-profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------Main Layout Container (No Sidebar) ----------- */
+.main-layout {
+    display: flex; /* Kept for consistency, but sidebar will be display:none */
+    width: 100%;
+    padding-top: 80px; /* Space for fixed header */
+    box-sizing: border-box;
+}
+
+/* Main Content Area (Full Width) */
+.content.full-width-content {
+    margin-left: 0; /* Override margin from sidebar */
+    flex-grow: 1;
+    padding: 32px;
+    box-sizing: border-box;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Card Styles (Copied from admin.css) */
+.card {
+    background-color: var(--sidebar-bg);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+}
+
+/* ----------Create Team Specific Styles ----------- */
+
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligned to left */
+    margin-bottom: 24px;
+}
+
+.content-header .back-arrow {
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.content-header .back-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.content-header .page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.form-container {
+    max-width: 600px; /* Lebar maksimal form seperti di Figma */
+    margin: 0 auto; /* Pusatkan form */
+    padding-bottom: 24px; /* Padding bawah sebelum tombol */
+}
+
+.team-avatar-upload {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #eee;
+    margin: 0 auto 32px auto; /* Pusatkan dan beri margin bawah */
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-color);
+}
+
+.team-avatar-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.team-avatar-upload .upload-icon-overlay {
+    position: absolute;
+    top: 80px; /* Posisikan dari atas */
+    right: 8px; /* Posisikan dari kanan */
+    background-color: var(--primary-color);
+    color: white;
+    width: 32px; /* Sesuaikan ukuran ikon overlay */
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Sesuaikan ukuran ikon di dalam overlay */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+    transform: translateY(10%); /* Sedikit penyesuaian vertikal */
+}
+
+.team-avatar-upload .upload-icon-overlay:hover {
+    background-color: #17a6b8;
+}
+
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dfe3e6;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--text-primary);
+    background-color: var(--body-bg); /* Input background like body-bg */
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(29, 196, 215, 0.2);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group select {
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 1em;
+    padding-right: 40px; /* Space for custom arrow */
+    cursor: pointer;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.make-team-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: block; /* Make it block to use margin auto */
+    margin: 32px auto 0 auto; /* Pusatkan tombol */
+    transition: background-color 0.2s ease;
+}
+
+.make-team-btn:hover {
+    background-color: #17a6b8;
+}
+
+/* --- Notification Styles (Common for all pages - Copied from admin.css) --- */
+#notification-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.notification-message {
+    background-color: var(--sidebar-bg);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    min-width: 250px;
+    max-width: 350px;
+    pointer-events: all;
+    animation: slideIn 0.3s ease-out forwards, fadeOut 0.3s ease-out 4.7s forwards;
+}
+
+.notification-message.success { border-left: 4px solid #00C851; }
+.notification-message.error { border-left: 4px solid #ff4444; }
+.notification-message.info { border-left: 4px solid #007bff; }
+
+.notification-message span.material-symbols-rounded {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.notification-message.success span.material-symbols-rounded { color: #00C851; }
+.notification-message.error span.material-symbols-rounded { color: #ff4444; }
+.notification-message.info span.material-symbols-rounded { color: #007bff; }
+
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+    .header-left, .header-right, .header-middle {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+    .search-bar {
+        max-width: 90%;
+    }
+
+    .content.full-width-content {
+        padding-top: 100px;
+        padding: 1.5rem;
+    }
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .content-header .page-title {
+        text-align: center;
+        width: 100%;
+    }
+    .content-header .back-arrow {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+    .form-container {
+        padding: 1.5rem;
+    }
+    .make-team-btn {
+        width: 100%;
+    }
+
+    #notification-area {
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        align-items: center;
+    }
+    .notification-message {
+        width: 90%;
+        min-width: unset;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-header .page-title {
+        font-size: 24px;
+    }
+}

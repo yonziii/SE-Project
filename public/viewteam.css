@@ -1,0 +1,533 @@
+/* teamview.css */
+:root {
+    --primary-color: #1DC4D7;
+    --orange-color: #ff4500;
+    --body-bg: #F4F7F9;
+    --sidebar-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #7e7e9f;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --light-blue-shadow: 0 4px 20px rgba(29, 196, 215, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* ----------Header (Fixed at Top - Copied from admin.css)----------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--sidebar-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.logo .teman {
+    color: var(--primary-color);
+}
+
+.logo .lomba {
+    color: var(--orange-color);
+}
+
+.header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 32px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg);
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+}
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 8px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.search-bar .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icons .material-symbols-rounded {
+    color: var(--text-secondary);
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.header-icons .material-symbols-rounded:hover {
+    color: var(--primary-color);
+}
+
+.header-profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------Main Layout Container (No Sidebar) ----------- */
+.main-layout {
+    display: flex;
+    width: 100%;
+    padding-top: 80px; /* Space for fixed header */
+    box-sizing: border-box;
+}
+
+/* Main Content Area (Full Width) */
+.content.full-width-content {
+    margin-left: 0;
+    flex-grow: 1;
+    padding: 32px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Card Styles (Copied from admin.css) */
+.card {
+    background-color: var(--sidebar-bg);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 24px;
+}
+
+/* ----------Team View Specific Styles ----------- */
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+
+.content-header .back-arrow {
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.content-header .back-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Team Details Card - Container for Logo and Text */
+.team-details-card {
+    display: flex; /* Menggunakan flexbox untuk logo dan teks */
+    align-items: center; /* Pusatkan logo dan teks secara vertikal */
+    gap: 24px; /* Jarak antara logo dan blok teks */
+    padding: 32px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+/* Wrapper untuk gambar/logo tim */
+.team-details-card .team-logo-area { /* Nama kelas baru untuk kejelasan */
+    width: 80px; /* Ukuran kotak untuk logo */
+    height: 80px;
+    background-color: #D5F3FF; /* Background biru muda sesuai Figma */
+    border-radius: 12px; /* Sudut membulat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Penting: mencegah logo mengecil di layar kecil */
+    overflow: hidden; /* Pastikan gambar di dalamnya tidak keluar */
+}
+
+.team-details-card .team-logo {
+    width: 100%; /* Gambar mengisi wrapper */
+    height: 100%;
+    object-fit: cover; /* Pastikan gambar proporsional */
+    border-radius: 12px; /* Sudut membulat sesuai wrapper */
+}
+
+/* Placeholder untuk ikon di dalam team-logo-area jika tidak ada gambar */
+.team-details-card .team-logo-area .material-symbols-rounded {
+    font-size: 48px; /* Ukuran ikon di placeholder */
+    color: var(--primary-color); /* Warna ikon */
+    line-height: 1;
+}
+
+/* Wrapper untuk judul, deskripsi, dan link edit */
+.team-details-card .team-text-area { /* Nama kelas baru untuk kejelasan */
+    flex-grow: 1; /* Ambil sisa ruang horizontal */
+    display: flex;
+    flex-direction: column; /* Stack judul, deskripsi, link secara vertikal */
+    justify-content: center; /* Pusatkan secara vertikal jika ada ruang lebih */
+}
+
+.team-details-card h3 {
+    font-size: 24px; /* Ukuran judul */
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px; /* Jarak antara judul dan deskripsi */
+}
+
+.team-details-card .team-description {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 8px; /* Jarak antara deskripsi dan link edit */
+}
+
+.edit-description-link {
+    color: var(--text-secondary); /* Warna abu-abu seperti di Figma */
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none; /* Hapus underline default link */
+    font-weight: 500; /* Font weight lebih ringan */
+    transition: color 0.2s ease;
+    align-self: flex-start; /* Pastikan link sejajar kiri dengan teks */
+}
+.edit-description-link:hover {
+    color: var(--primary-color); /* Warna biru saat hover */
+    text-decoration: underline; /* Tambahkan underline saat hover */
+}
+
+
+/* Team Join Requests Section */
+.team-join-requests h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.request-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between requests */
+}
+
+.request-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--body-bg); /* Lighter background for each request item */
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow for items */
+}
+
+.request-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+}
+
+.request-info {
+    flex-grow: 1;
+}
+
+.request-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.request-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.request-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.request-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px; /* Icon size */
+    padding: 8px; /* Make clickable area larger */
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    /* Material Symbols uses FILL property for filled icons */
+    font-variation-settings: 'FILL' 1; /* Memastikan ikon terisi (filled) */
+}
+
+.request-actions .accept-btn {
+    color: #4CAF50; /* Green */
+}
+.request-actions .reject-btn {
+    color: #F44336; /* Red */
+}
+
+.request-actions button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Invite People Section */
+.invite-people-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.invite-link-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dfe3e6;
+    border-radius: 12px;
+    overflow: hidden; /* Ensure input and button look connected */
+    background-color: var(--body-bg);
+}
+
+.invite-link-container input {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.invite-link-container .copy-link-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.invite-link-container .copy-link-btn:hover {
+    background-color: #17a6b8;
+}
+
+.invite-link-container .copy-link-btn .material-symbols-rounded {
+    font-size: 20px;
+    /* Material Symbols uses FILL property for filled icons */
+    font-variation-settings: 'FILL' 1; /* Memastikan ikon terisi (filled) */
+}
+
+/* --- Notification Styles (Common for all pages - Copied from admin.css) --- */
+#notification-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.notification-message {
+    background-color: var(--sidebar-bg);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    min-width: 250px;
+    max-width: 350px;
+    pointer-events: all;
+    animation: slideIn 0.3s ease-out forwards, fadeOut 0.3s ease-out 4.7s forwards;
+}
+
+.notification-message.success { border-left: 4px solid #00C851; }
+.notification-message.error { border-left: 4px solid #ff4444; }
+.notification-message.info { border-left: 4px solid #007bff; }
+
+.notification-message span.material-symbols-rounded {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.notification-message.success span.material-symbols-rounded { color: #00C851; }
+.notification-message.error span.material-symbols-rounded { color: #ff4444; }
+.notification-message.info span.material-symbols-rounded { color: #007bff; }
+
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+    .header-left, .header-right, .header-middle {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        padding: 5px 0;
+    }
+    .search-bar {
+        max-width: 90%;
+    }
+
+    .full-width-content {
+        padding-top: 100px;
+        padding: 1.5rem;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .content-header .page-title {
+        text-align: center;
+        width: 100%;
+    }
+    .content-header .back-arrow {
+        margin-right: 0;
+        align-self: flex-start;
+    }
+
+    .team-details-card {
+        flex-direction: column; /* Stack logo and text on small screens */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text when stacked */
+        gap: 16px;
+    }
+    .team-details-card .team-logo-area {
+        width: 60px; /* Smaller logo */
+        height: 60px;
+        margin-bottom: 10px;
+    }
+    .team-details-card .team-logo-area .material-symbols-rounded {
+        font-size: 36px; /* Smaller icon */
+    }
+    .team-details-card h3 {
+        font-size: 20px;
+    }
+    .team-details-card .team-description,
+    .edit-description-link {
+        text-align: center; /* Center text when stacked */
+        align-self: center; /* Center link when stacked */
+    }
+
+    .request-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .request-info {
+        text-align: left;
+        width: 100%;
+    }
+    .request-actions {
+        width: 100%;
+        justify-content: flex-end; /* Push buttons to the right */
+    }
+    .invite-link-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .invite-link-container .copy-link-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #notification-area {
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        align-items: center;
+    }
+    .notification-message {
+        width: 90%;
+        min-width: unset;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-header .page-title {
+        font-size: 24px;
+    }
+}
