@@ -121,9 +121,76 @@ videoBtn.addEventListener('click', () => videoInput.click());
 documentBtn.addEventListener('click', () => documentInput.click());
 
 // Handle file selection
-imageInput.addEventListener('change', handleFileSelect);
-videoInput.addEventListener('change', handleFileSelect);
-documentInput.addEventListener('change', handleFileSelect);
+imageInput.addEventListener('change', function(event) {
+    if (imageInput.files.length > 15) {
+        showNotification('You can upload a maximum of 15 images.', 'error');
+        imageInput.value = '';
+        return;
+    }
+
+    handleFileSelect(event);
+});
+videoInput.addEventListener('change', function(event) {
+    if (videoInput.files.length > 1) {
+        showNotification('You can upload only 1 video.', 'error');
+        videoInput.value = '';
+        return;
+    }
+    const file = videoInput.files[0];
+    if (file && file.size > 1024 * 1024 * 1024) { // 1GB
+        showNotification('Video must be less than 1GB.', 'error');
+        videoInput.value = '';
+        return;
+    }
+    handleFileSelect(event);
+});
+
+documentInput.addEventListener('change', async function(event) {
+    if (documentInput.files.length > 1) {
+        showNotification('You can upload only 1 document.', 'error');
+        documentInput.value = '';
+        return;
+    }
+    const file = documentInput.files[0];
+    if (file && file.size > 100 * 1024 * 1024) { // 100MB
+        showNotification('Document must be less than 100MB.', 'error');
+        documentInput.value = '';
+        return;
+    }
+
+    // PDF check
+    if (file && (file.type === 'application/pdf' || file.name.endsWith('.pdf'))) {
+        const pageCount = await getPdfPageCount(file);
+        if (pageCount > 300) {
+            showNotification('PDF must be 300 pages or less.', 'error');
+            documentInput.value = '';
+            return;
+        }
+        const wordCount = await getPdfWordCount(file);
+        if (wordCount > 1000000) {
+            showNotification('PDF must be 1 million words or less.', 'error');
+            documentInput.value = '';
+            return;
+        }
+    }
+
+    // DOCX check
+    if (file && (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.name.endsWith('.docx'))) {
+        const { pageCount, wordCount } = await getDocxStats(file);
+        if (pageCount > 300) {
+            showNotification('DOCX must be 300 pages or less.', 'error');
+            documentInput.value = '';
+            return;
+        }
+        if (wordCount > 1000000) {
+            showNotification('DOCX must be 1 million words or less.', 'error');
+            documentInput.value = '';
+            return;
+        }
+    }
+
+    handleFileSelect(event);
+});
 
 function handleFileSelect(event) {
     const file = event.target.files[0];
@@ -164,6 +231,48 @@ function handleFileSelect(event) {
     filePreview.appendChild(previewItem);
 }
 
+async function getDocxStats(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+            try {
+                const arrayBuffer = e.target.result;
+                const result = await mammoth.extractRawText({ arrayBuffer });
+                const text = result.value;
+                const wordCount = text.split(/\s+/).length;
+                // DOCX doesn't have a page count, but you can estimate:
+                // Assume 500 words per page as a rough estimate
+                const pageCount = Math.ceil(wordCount / 500);
+                resolve({ pageCount, wordCount });
+            } catch (err) {
+                reject(err);
+            }
+        };
+        reader.onerror = reject;
+        reader.readAsArrayBuffer(file);
+    });
+}
+
+async function getPdfPageCount(file) {
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    return pdf.numPages;
+}
+
+async function getPdfWordCount(file) {
+    const pdfjsLib = window['pdfjs-dist/build/pdf'];
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let wordCount = 0;
+    for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const text = textContent.items.map(item => item.str).join(' ');
+        wordCount += text.split(/\s+/).length;
+    }
+    return wordCount;
+}
 // Add hidden file inputs to handle initial file selection
 const initialImageInput = document.createElement('input');
 initialImageInput.type = 'file';
@@ -254,24 +363,124 @@ privacyDropdown.addEventListener('click', (e) => {
 // Add this after your existing modal code
 const postBtn = document.querySelector('.post-btn');
 
-postBtn.addEventListener('click', () => {
+postBtn.addEventListener('click', async () => {
     const textarea = document.querySelector('.modal-body textarea');
     const filePreview = document.getElementById('file-preview');
-    
+    const privacyValue = Array.from(dropdownItems).find(item =>
+        item.querySelector('.dropdown-text span').textContent === privacyText.textContent
+    )?.dataset.value || 'public';
+
     // Basic validation
     if (!textarea.value.trim() && !filePreview.hasChildNodes()) {
         showNotification('Please add some content or media to your post', 'error');
         return;
     }
 
-    // Show success notification
-    showNotification('Post created successfully!', 'success');
+    // Prepare media arrays
+    let image_urls = [];
+    let video_url = null;
+    let document_url = null;
 
-    // Close modal and redirect after a short delay
-    setTimeout(() => {
-        closeModalHandler();
-        window.location.href = 'home.html';
-    }, 2000);
+    // Upload all selected images
+    if (imageInput.files.length > 0) {
+        for (const file of imageInput.files) {
+            const filePath = `posts/${Date.now()}_${file.name}`;
+            const { error: uploadErr } = await supabase
+                .storage
+                .from('post-media')
+                .upload(filePath, file, { cacheControl: '3600', upsert: false });
+            if (uploadErr) {
+                showNotification('Image upload failed.', 'error');
+                continue;
+            }
+            const { data, error: urlErr } = supabase
+                .storage
+                .from('post-media')
+                .getPublicUrl(filePath);
+            if (urlErr || !data.publicUrl) {
+                showNotification('Could not retrieve image URL.', 'error');
+                continue;
+            }
+            image_urls.push(data.publicUrl);
+        }
+    }
+
+    // Upload video if selected
+    if (videoInput.files.length > 0) {
+        const file = videoInput.files[0];
+        const filePath = `posts/${Date.now()}_${file.name}`;
+        const { error: uploadErr } = await supabase
+            .storage
+            .from('post-media')
+            .upload(filePath, file, { cacheControl: '3600', upsert: false });
+        if (uploadErr) {
+            showNotification('Video upload failed.', 'error');
+        } else {
+            const { data, error: urlErr } = supabase
+                .storage
+                .from('post-media')
+                .getPublicUrl(filePath);
+            if (urlErr || !data.publicUrl) {
+                showNotification('Could not retrieve video URL.', 'error');
+            } else {
+                video_url = data.publicUrl;
+            }
+        }
+    }
+
+    // Upload document if selected
+    if (documentInput.files.length > 0) {
+        const file = documentInput.files[0];
+        const filePath = `posts/${Date.now()}_${file.name}`;
+        const { error: uploadErr } = await supabase
+            .storage
+            .from('post-media')
+            .upload(filePath, file, { cacheControl: '3600', upsert: false });
+        if (uploadErr) {
+            showNotification('Document upload failed.', 'error');
+        } else {
+            const { data, error: urlErr } = supabase
+                .storage
+                .from('post-media')
+                .getPublicUrl(filePath);
+            if (urlErr || !data.publicUrl) {
+                showNotification('Could not retrieve document URL.', 'error');
+            } else {
+                document_url = data.publicUrl;
+            }
+        }
+    }
+
+    // Prepare payload
+    const payload = {
+        content: textarea.value.trim(),
+        image_urls,
+        video_url,
+        document_url,
+        privacy: privacyValue
+    };
+
+    // Send to backend
+    const token = localStorage.getItem('token');
+    try {
+        const res = await fetch('/api/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) return showNotification('Error: ' + data.message, 'error');
+        showNotification('Post created successfully!', 'success');
+        setTimeout(() => {
+            closeModalHandler();
+            window.location.href = 'home.html';
+        }, 2000);
+    } catch (err) {
+        showNotification('Failed to create post.', 'error');
+    }
 });
 
 // Add notification function
@@ -303,3 +512,82 @@ function showNotification(message, type) {
         }, 300);
     }, 3000);
 }
+
+// Helper to format "time ago"
+function formatTimeAgo(dateString) {
+    const now = new Date();
+    const date = new Date(dateString);
+    const diffMs = now - date;
+    const diffSec = Math.floor(diffMs / 1000);
+    const diffMin = Math.floor(diffSec / 60);
+    const diffHr = Math.floor(diffMin / 60);
+    const diffDay = Math.floor(diffHr / 24);
+
+    if (diffMin < 1) return 'Just now';
+    if (diffMin < 60) return `${diffMin} minute${diffMin > 1 ? 's' : ''} ago`;
+    if (diffHr < 24) return `${diffHr} hour${diffHr > 1 ? 's' : ''} ago`;
+
+    // Show "26 May" if more than a day ago
+    return date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+}
+
+async function loadPosts() {
+    const feed = document.querySelector('.feed');
+    // Remove all posts except the create-post box
+    feed.querySelectorAll('.post').forEach(post => post.remove());
+
+    try {
+        const res = await fetch('/api/posts');
+        const { posts } = await res.json();
+
+        posts.forEach(post => {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post';
+
+            // Format attachments (images, video, document)
+            let mediaHtml = '';
+            if (post.attachments && Array.isArray(post.attachments)) {
+                post.attachments.forEach(att => {
+                    if (att.type === 'image') {
+                        mediaHtml += `<img src="${att.file_url}" alt="Post Image" class="post-image">`;
+                    } else if (att.type === 'video') {
+                        mediaHtml += `<video src="${att.file_url}" controls class="post-video"></video>`;
+                    } else if (att.type === 'document') {
+                        mediaHtml += `<a href="${att.file_url}" target="_blank" class="post-document">📄 Document</a>`;
+                    }
+                });
+            }
+
+            postDiv.innerHTML = `
+                <div class="post-header">
+                    <img src="./asset/yonzi.png" alt="Profile Picture">
+                    <div class="post-info">
+                        <div class="post-author">
+                            <h4>${post.author_name || 'User'}</h4>
+                            <p>•</p>
+                            <span class="follow-btn">Follow</span>
+                            <span class="material-symbols-rounded">more_horiz</span>
+                        </div>
+                        <p class="post-time">${formatTimeAgo(post.created_at)}</p>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>${post.content}</p>
+                    ${mediaHtml}
+                </div>
+                <div class="post-actions">
+                    <button><i class="far fa-heart"></i> 0</button>
+                    <button><i class="far fa-comment"></i> 0</button>
+                    <button><i class="fas fa-retweet"></i> 0</button>
+                    <button><i class="far fa-share-square"></i> Share</button>
+                </div>
+            `;
+            feed.appendChild(postDiv);
+        });
+    } catch (err) {
+        showNotification('Failed to load posts.', 'error');
+    }
+}
+
+// Call this after DOMContentLoaded
+document.addEventListener('DOMContentLoaded', loadPosts);

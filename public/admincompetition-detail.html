@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="admincompetition-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" rel="stylesheet">
+    <title>Competition Details</title>
+</head>
+<body>
+    <div class="back-btn-container">
+        <button onclick="location.href='admincompetitions.html'" class="back-btn">
+            <span class="material-symbols-rounded">arrow_back</span>
+            Back to Competitions
+        </button>
+    </div>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <h1><span class="teman">Teman</span><span class="lomba">Lomba</span></h1>
+            </div>
+        </div>
+        <div class="header-middle">
+            <div class="search-bar">
+                <span class="material-symbols-rounded">search</span>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-icons">
+                <span class="material-symbols-rounded">notifications</span>
+            </div>
+            <img src="https://i.pravatar.cc/100?img=8" alt="Profile Picture" class="header-profile">
+        </div>
+    </header>
+    <nav class="sidebar">
+        <a href="#" class="profile">
+            <div class="profile-header">
+                <img src="https://i.pravatar.cc/100?img=7" alt="Profile Picture">
+                <div class="profile-info">
+                    <h3>John Doe</h3>
+                    <p>@admin</p>
+                </div>
+            </div>
+        </a>
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="admin.html">
+                    <span class="material-symbols-rounded">dashboard</span>
+                    <span class="text nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item active">
+                <a href="admincompetitions.html">
+                    <span class="material-symbols-rounded">emoji_events</span>
+                    <span class="text nav-text">Competitions</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">group</span>
+                    <span class="text nav-text">User Management</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">flag</span>
+                    <span class="text nav-text">Reports</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">analytics</span>
+                    <span class="text nav-text">Analytics</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <span class="material-symbols-rounded">settings</span>
+                    <span class="text nav-text">Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1 class="page-title">Competition Details</h1>
+        <div class="form-container">
+            <!-- Poster -->
+            <div class="form-section">
+                <h2 class="section-title">Upload Poster</h2>
+                <div class="upload-box" id="upload-box">
+                    <img id="poster-img" style="max-width: 100%; max-height: 300px;" alt="Poster">
+                </div>
+            </div>
+            <!-- Eligibility -->
+            <div class="form-section">
+                <h2 class="section-title">Participation Eligibility</h2>
+                <div id="eligibility" class="readonly-field"></div>
+            </div>
+            <!-- Competition Details -->
+            <div class="form-section">
+                <h2 class="section-title">Competition Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <div id="competition-title" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <div id="competition-categories" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Competition Scope</label>
+                        <div id="competition-scope" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Participant</label>
+                        <div id="participant-type" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Minimum Team Size</label>
+                        <div id="min-participants" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Maximum Team Size</label>
+                        <div id="max-participants" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Entry Fee</label>
+                        <div id="entry-fee-type" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fee Amount (Rp)</label>
+                        <div id="fee-amount" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Organizer Name</label>
+                        <div id="organizer-name" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Competition Website</label>
+                        <div id="competition-website" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <div id="start-date" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <div id="end-date" class="readonly-field"></div>
+                    </div>
+                    <div class="form-group description-group" style="grid-column: 1 / -1;">
+                        <label>Description</label>
+                        <div id="competition-description" class="readonly-field"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="activate-btn" class="submit-btn">Activate</button>
+                <button id="reject-btn" class="submit-btn" style="background: #dc3545;">Reject</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="admincompetition-detail.js"></script>
+</body>
+</html>

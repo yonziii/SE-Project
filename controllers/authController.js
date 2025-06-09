@@ -4,8 +4,8 @@ const User = require('../models/user');
 
 const signup = async (req, res, next) => {
   try {
-    const { email, password, role } = req.body;
-    if (!email || !password || !role) {
+    const { email, password, roles } = req.body;
+    if (!email || !password || !roles) {
     return res.status(400).json({ message: 'All fields are required' });
     }
     // 1) Check if user already exists
@@ -16,9 +16,9 @@ const signup = async (req, res, next) => {
     const hashed = await bcrypt.hash(password, 12);
 
     // 3) Create user
-    const user = await User.create({ email, password: hashed, role });
+    const user = await User.create({ email, password: hashed, roles: ['user'] });
 
-    res.status(201).json({ id: user.id, email: user.email, role: user.role });
+    res.status(201).json({ id: user.id, email: user.email, roles: user.roles });
   } catch (err) {
     next(err);
   }
@@ -37,11 +37,10 @@ const signin = async (req, res, next) => {
 
     // 3) Sign JWT
     const token = jwt.sign(
-      { sub: user.id, role: user.role, email: user.email },
+      { sub: user.id, roles: user.roles, email: user.email },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
-
     res.json({ token, expiresIn: process.env.JWT_EXPIRES_IN });
   } catch (err) {
     next(err);

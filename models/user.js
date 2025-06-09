@@ -17,9 +17,9 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,     // hashed password
     allowNull: false,
   },
-  role: {
-    type: DataTypes.ENUM('user','admin'),
-    defaultValue: 'user',
+  roles: {
+    type: DataTypes.ARRAY(DataTypes.STRING), // For Postgres
+    defaultValue: ['user'],
   },
 }, {
   tableName: 'users',
